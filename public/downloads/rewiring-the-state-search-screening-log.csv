@@ -1,0 +1,59 @@
+record_id,record,stage,decision,reason,included_evidence_id
+R001,"Alonso and Andrews 2024, Can city deals improve economic performance?",full_text,include,"Direct English quasi-experimental growth evidence",E01
+R002,"Arends 2020, Dangers of Fiscal Decentralization and Public Service Delivery",full_text,include,"Critical synthesis of service-specific risks and conditions",E02
+R003,"Baskaran Feld and Schnellenbach 2016, Fiscal federalism and growth meta-analysis",full_text,include,"Highest-level synthesis of growth estimates",E03
+R004,"Baxter et al. 2018, Effects of integrated care",full_text,include,"Systematic UK/international evidence for integration outcomes",E04
+R005,"BEIS/Warwick 2021, Evaluation of Devolved Institutions",full_text,include,"Direct English implementation and capability evidence",E05
+R006,"Bevan and Hood 2006, What's measured is what matters",full_text,include,"Direct English evidence on outcome-measure gaming",E06
+R007,"Björkman and Svensson 2009, Power to the People",full_text,include,"Randomised evidence for community-accountability mechanism",E07
+R008,"Brachert Dettmann and Titze 2019, Regional effects of a place-based policy",full_text,include,"Causal international place-investment evidence with null outcomes",E08
+R009,"Britteon et al. 2022, Effect of devolution on health",full_text,include,"Direct English synthetic-control evidence",E09
+R010,"Britteon et al. 2024, Impact of devolution on local health systems",full_text,include,"Direct whole-system English quasi-experiment",E10
+R011,"Channa and Faguet 2016, Decentralization of Health and Education",full_text,include,"Quality-adjusted review of service decentralisation",E11
+R012,"Charbit 2020, From de jure to de facto decentralised public policies",full_text,include,"Relevant multi-level coordination mechanism synthesis",E12
+R013,"Ferraz and Finan 2008, Exposing Corrupt Politicians",full_text,include,"Quasi-random audit disclosure evidence",E13
+R014,"Gemmell Kneller and Sanz 2013, Spending versus revenue decentralization",full_text,include,"Separates revenue and spending growth effects",E14
+R015,"IFS 2025, Short- and medium-term effects of Sure Start",full_text,include,"Direct English prevention/integration and cost-benefit evidence",E15
+R016,"IFS Phillips 2024, Reforming local government funding",full_text,include,"Direct English equalisation and incentive analysis",E16
+R017,"IFS 2026, Response on income-tax assignment to mayoral authorities",full_text,include,"Direct current fiscal-design analysis",E17
+R018,"Jong et al. OECD 2021, Urban productivity and local government",full_text,include,"Comparative analysis of autonomy, quality and fragmentation",E18
+R019,"Mansuri and Rao 2013, Localizing Development",full_text,include,"Comprehensive participation and capture synthesis",E19
+R020,"Masters et al. 2017, ROI of public health interventions",full_text,include,"Systematic prevention economic evidence with limitations",E20
+R021,"Moss et al. 2025, Devolution and local health-system financing",full_text,include,"Direct English synthetic DiD with positive and null finance outcomes",E21
+R022,"NAO 2013, Whole-Place Community Budgets",full_text,include,"Direct English audit of integration and prospective savings",E22
+R023,"NAO 2016, English devolution deals",full_text,include,"Direct early design, accountability and evaluation evidence",E23
+R024,"NAO 2021, Central oversight of arm's-length bodies",full_text,include,"Best direct evidence for ALB model and oversight claims",E24
+R025,"NAO 2022, Introducing Integrated Care Systems",full_text,include,"Direct English implementation and centre-place dependencies",E25
+R026,"NAO 2026, Devolution in England: funding and accountability",full_text,include,"Current direct English audit evidence",E26
+R027,"Neumark and Simpson 2015, Place-Based Policies",full_text,include,"Authoritative review of effects, incidence and displacement",E27
+R028,"OECD 2019, Making Decentralisation Work",full_text,include,"Comprehensive comparative design synthesis",E28
+R029,"OECD 2019, Effective Multi-level Public Investment",full_text,include,"Cross-boundary investment and capability framework",E29
+R030,"OECD 2020, Synthesising good practices in fiscal federalism",full_text,include,"Fiscal assignment, equalisation and coordination synthesis",E30
+R031,"OECD 2022, Regional Governance in OECD Countries",full_text,include,"Comparative evidence on asymmetric/staged governance",E31
+R032,"OECD 2025, Place-Based Policies for the Future",full_text,include,"Recent global synthesis of evaluation quality and design",E32
+R033,"Rodríguez-Pose and Ezcurra 2010, Decentralization and regional disparities",full_text,include,"Direct comparative equity analysis",E33
+R034,"Rodríguez-Pose and Ezcurra 2011, Fiscal decentralization and growth",full_text,include,"Important adverse OECD growth estimate",E34
+R035,"Sapkota et al. 2023, Impact of decentralisation on health systems",full_text,include,"Recent systematic review of reviews",E35
+R036,"Stossberg Bartolini and Blöchliger 2016, Fiscal decentralisation and income inequality",full_text,include,"Distributional evidence beyond aggregate Gini",E36
+R037,"Sweeney 2026, Devolution and economic growth in England's City Regions",full_text,include,"Recent direct English null/adverse growth evidence",E37
+R038,"Wilkoszewski and Sundby 2014, Steering from the Centre",full_text,include,"Comparative evidence on continuing central functions",E38
+R039,"World Bank/Ahmad et al. 2005, Decentralization and Service Delivery",full_text,include,"Structured institutional service-delivery framework",E39
+R040,"UK Government 2024, English Devolution White Paper",title_abstract,exclude,"Policy statement/proposal; no evaluative evidence", 
+R041,"UK Government 2025, Annual report on English devolution",title_abstract,exclude,"Descriptive progress reporting without causal outcome evaluation", 
+R042,"Local Government Association 2025, A force for growth",title_abstract,exclude,"Advocacy/commissioned opportunity estimate without credible devolution counterfactual", 
+R043,"Health Foundation 2024, Blog on Greater Manchester devolution",title_abstract,exclude,"Secondary commentary; underlying primary studies included", 
+R044,"Centre for Cities 2024, Local economic policy making: where's the evidence?",title_abstract,exclude,"Commentary rather than primary research", 
+R045,"Government 2026, Place Based Budgets policy material",title_abstract,exclude,"Prospective policy design; outcomes not yet observable", 
+R046,"LGA 2021, Combined authorities financial freedoms",title_abstract,exclude,"Descriptive self-reported examples without counterfactual outcomes", 
+R047,"Thornton 2007, Fiscal decentralization and economic growth reconsidered",full_text,exclude,"Relevant null study, but subsumed by included meta-analysis and later OECD studies; retained as contextual citation only", 
+R048,"Martinez-Vazquez and McNab 2003, Fiscal decentralization and economic growth",full_text,exclude,"Older narrative/empirical review superseded for this rapid synthesis by meta-analysis and newer OECD analyses", 
+R049,"Ferraz and Finan 2011, Electoral Accountability and Corruption",full_text,exclude,"Strong but mechanism overlaps substantially with included 2008 audit-disclosure study; used for sensitivity only", 
+R050,"OECD 2014, Recommendation on Effective Public Investment",full_text,exclude,"Normative instrument; supporting implementation evidence captured in 2019 toolkit", 
+R051,"OECD 2014/2020, Asymmetric Decentralisation synthesis",full_text,exclude,"Key practice evidence captured in the broader 2022 regional-governance report", 
+R052,"Sepulveda and Martinez-Vazquez 2011, Poverty and income equality",full_text,exclude,"Cross-country developing-setting findings too indirect and unstable for core synthesis; OECD distribution studies preferred", 
+R053,"Britteon et al. 2022 publisher duplicate",deduplication,duplicate,"Duplicate record of R009",E09
+R054,"Moss et al. 2025 PMC duplicate",deduplication,duplicate,"Duplicate record of R021",E21
+R055,"Baxter et al. 2018 PubMed duplicate",deduplication,duplicate,"Duplicate record of R004",E04
+R056,"Rodríguez-Pose and Ezcurra 2011 repository duplicate",deduplication,duplicate,"Duplicate record of R034",E34
+R057,"Björkman and Svensson 2009 repository duplicate",deduplication,duplicate,"Duplicate record of R007",E07
+R058,"OECD 2025 Place-Based Policies PDF duplicate",deduplication,duplicate,"Duplicate record of R032",E32
