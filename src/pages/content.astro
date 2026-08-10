@@ -1,15 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 
 const sections = [
-  { name: 'Writing', path: '/blog', description: 'Essays, evidence projects and selected public posts' },
-  { name: 'Projects', path: '/projects', description: 'Applied research and analytical tools' },
-  { name: 'Publications', path: '/publications', description: 'Academic papers and published work' },
-  { name: 'Talks', path: '/talks', description: 'Conference talks and presentations' },
-  { name: 'CV', path: '/cv', description: 'Professional background' },
-  { name: 'Leadership', path: '/leadership', description: 'Leadership, service and working principles' },
-  { name: 'Travel', path: '/travel', description: 'Travel stories and observations' },
-  { name: 'Experiments', path: '/experiments', description: 'Experimental projects and ideas' },
+  { name: 'Writing', path: 'blog/', description: 'Essays, evidence projects and selected public posts' },
+  { name: 'Projects', path: 'projects/', description: 'Applied research and analytical tools' },
+  { name: 'Publications', path: 'publications/', description: 'Academic papers and published work' },
+  { name: 'Talks', path: 'talks/', description: 'Conference talks and presentations' },
+  { name: 'CV', path: 'cv/', description: 'Professional background' },
+  { name: 'Leadership', path: 'leadership/', description: 'Leadership, service and working principles' },
+  { name: 'Travel', path: 'travel/', description: 'Travel stories and observations' },
+  { name: 'Experiments', path: 'experiments/', description: 'Experimental projects and ideas' },
 ];
 ---
 
@@ -19,7 +20,7 @@ const sections = [
     <h1>All sections</h1>
     <div class="sections-list">
       {sections.map((section) => (
-        <a href={section.path} class="section-link">
+        <a href={`${base}${section.path}`} class="section-link">
           <div class="section-item">
             <h2>{section.name}</h2>
             <p>{section.description}</p>
