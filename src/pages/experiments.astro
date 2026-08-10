@@ -4,46 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Experiments" description="Experimental projects and ideas">
   <div class="section-page">
+    <span class="eyebrow">Experiments</span>
     <h1>Experiments</h1>
-    <p class="intro">Experimental projects and ideas. Add your experiments to the `content/experiments/` directory.</p>
-    <p class="no-content">Experiments coming soon. Add markdown files to the `content/experiments/` directory.</p>
+    <p class="intro">Experimental projects, prototypes and ideas.</p>
+    <p class="no-content">No experiments published here yet.</p>
   </div>
 </BaseLayout>
 
 <style>
-  .section-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-  }
-
-  .section-page h1 {
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-  }
-
-  .intro {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .no-content {
-    text-align: center;
-    color: var(--text-tertiary);
-    padding: 3rem 2rem;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border: 1px dashed var(--border);
-  }
-
-  @media (max-width: 768px) {
-    .section-page {
-      padding: 2rem 1rem;
-    }
-
-    .section-page h1 {
-      font-size: 1.75rem;
-    }
-  }
+  .section-page{width:min(var(--site-width),calc(100% - 2rem));margin:0 auto;padding:clamp(2.5rem,7vw,5rem) 0}.eyebrow{text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-size:.75rem;font-weight:800}.section-page h1{font-size:clamp(2.7rem,7vw,5rem);line-height:.98;letter-spacing:-.05em;margin:.5rem 0}.intro{color:var(--text-secondary);font-size:1.1rem;margin-bottom:2rem;max-width:760px}.no-content{max-width:var(--reading-width);color:var(--text-tertiary);padding:3rem 2rem;background:var(--bg-secondary);border-radius:16px;border:1px dashed var(--border)}
 </style>
