@@ -70,9 +70,7 @@ const authoredPosts = [
         <div class="topic-group">
           <div class="topic-intro"><h3>{group.title}</h3><p>{group.description}</p></div>
           <div class="post-grid">
-            {group.posts.map(post => (
-              <article class="post-card"><small>{post.label || 'LinkedIn'}</small><h4><a href={post.url} target="_blank" rel="noreferrer">{post.title} <span aria-hidden="true">↗</span></a></h4><p>{post.description}</p></article>
-            ))}
+            {group.posts.map(post => <article class="post-card"><small>{post.label || 'LinkedIn'}</small><h4><a href={post.url} target="_blank" rel="noreferrer">{post.title} <span aria-hidden="true">↗</span></a></h4><p>{post.description}</p></article>)}
           </div>
         </div>
       ))}
