@@ -1,40 +1,40 @@
 {
-  "lastUpdated": "2026-08-08",
+  "lastUpdated": "2026-08-10",
   "overall": {
-    "headline": "The evidence supports conditional rather than automatic benefits from devolution.",
-    "summary": "The strongest recurring finding is that institutional design matters. Devolution can improve responsiveness, coordination and service efficiency, but the pathway is conditional on capacity, accountability, fiscal design, information and coordination across levels of government. Direct evidence that fiscal devolution alone raises economic growth is mixed. English reforms therefore need explicit monitoring of intermediate mechanisms as well as final outcomes.",
+    "headline": "Evidence confidence varies across the expected-benefit pathways and should shape monitoring and learning.",
+    "summary": "The strongest recurring evidence concerns implementation conditions: institutional capability, clear responsibilities, usable accountability, fiscal design, information and coordination across levels of government. Evidence for some final outcomes, particularly aggregate growth and system-wide savings, is more mixed or context-dependent. The practical use of the evidence is therefore to make mechanisms explicit, track intermediate indicators and adapt implementation as evidence develops.",
     "confidence": "moderate"
   },
   "futureChallenges": [
     {
       "challenge": "Capacity heterogeneity",
-      "whatEvidenceSays": "Capacity is repeatedly identified as a prerequisite, but robust causal evidence on which dimensions matter most is weak.",
+      "whatEvidenceSays": "Capacity is repeatedly identified as an implementation condition, but robust causal evidence on which dimensions matter most is weak.",
       "evidenceNeed": "Validate place-level measures of staffing, skills, leadership, financial management, data capability and partnership capacity; test predictive validity against implementation and outcomes."
     },
     {
-      "challenge": "Fiscal autonomy versus equalisation",
-      "whatEvidenceSays": "Greater own-source revenue can strengthen discretion and incentives but creates volatility and divergence where tax bases differ.",
+      "challenge": "Fiscal autonomy and equalisation",
+      "whatEvidenceSays": "Greater own-source revenue can strengthen discretion and incentives but can also increase exposure to volatility and differences in local tax bases.",
       "evidenceNeed": "Model and evaluate risk-sharing, reset and equalisation arrangements under new English settlements."
     },
     {
       "challenge": "Integration and prevention",
-      "whatEvidenceSays": "The mechanism is plausible and is being actively tested, but system-level causal evidence remains sparse.",
+      "whatEvidenceSays": "The mechanism is plausible and is being actively tested, but system-level causal evidence on resource shifts, later costs and cross-budget benefits remains sparse.",
       "evidenceNeed": "Track lead indicators, service use, resource shifts, costs and outcomes across organisational boundaries over multiple years."
     },
     {
       "challenge": "Outcome accountability",
-      "whatEvidenceSays": "Transparency and accountability can improve governance, but poorly designed metrics can create burden, gaming or false precision.",
+      "whatEvidenceSays": "Transparency and accountability can affect governance, but poorly designed metrics can create burden, gaming or false precision.",
       "evidenceNeed": "Test whether a small set of timely indicators predicts later outcomes and supports corrective action without distorting behaviour."
     },
     {
-      "challenge": "Growth claims",
-      "whatEvidenceSays": "The direct fiscal-decentralisation-to-growth evidence is mixed and does not justify a generic positive effect assumption.",
-      "evidenceNeed": "Evaluate specific mechanisms such as transport, skills, planning, business support and investment rather than treating devolution as a single treatment."
+      "challenge": "Growth pathway",
+      "whatEvidenceSays": "The direct fiscal-decentralisation-to-growth evidence is mixed, so confidence is higher in specific mechanisms and conditions than in a single average effect.",
+      "evidenceNeed": "Evaluate specific channels such as transport, skills, planning, business support and investment, including distribution and displacement, rather than treating devolution as a single treatment."
     },
     {
-      "challenge": "National-local boundary",
-      "whatEvidenceSays": "Effective decentralisation requires clear responsibilities and continuing national functions in standards, fiscal sustainability, equalisation and system learning.",
-      "evidenceNeed": "Compare stewardship and escalation models, including how underperformance is identified and addressed while preserving local autonomy."
+      "challenge": "National-local stewardship boundary",
+      "whatEvidenceSays": "Multi-level governance evidence identifies continuing roles for clear responsibilities, standards, fiscal sustainability, equalisation and system learning, while the effective balance is context-specific.",
+      "evidenceNeed": "Compare stewardship and escalation models, including how implementation problems are identified and addressed while preserving local discretion."
     }
   ]
 }
