@@ -15,7 +15,7 @@ author: Philip Ball
 - **Match funding to readiness:** where need is high but delivery capacity is low, invest first in capability, engagement and barrier removal.
 - **Manage public value actively:** compare the likely value of the next pound, protect credible prevention while benefits mature, and avoid uniform “salami-slicing”.
 
-The evidence supports this direction, but not a universal claim that prevention is always cheaper or more effective. Comparative cost-effectiveness evidence remains limited across several DCMS sectors.
+The evidence supports this direction, but not a universal claim that prevention is always cheaper or more effective. Comparative cost-effectiveness evidence remains limited across several sectors.
 
 ## Can place-based funding be well targeted—and still misallocated?
 
@@ -72,7 +72,7 @@ The Youth Endowment Fund’s review of place-based approaches similarly stresses
 
 Civil-society organisations do not convert grants into outcomes mechanically. Sustainable funding, workforce stability, trusted relationships, commissioning arrangements and organisational capability all influence delivery.
 
-A DCMS evidence scan also warns that narrow, activity-based KPIs may undermine holistic, person-centred provision and place a disproportionate administrative burden on smaller organisations. This is primarily evidence about mechanisms rather than causal effectiveness, but it suggests that funding a high-need place without supporting its civic infrastructure may create a predictable implementation failure. [DCMS](https://www.gov.uk/government/publications/impacts-of-public-services-being-delivered-by-civil-society-organisations/research-report-impacts-of-public-services-being-delivered-by-civil-society-organisations)
+A published UK government evidence scan also warns that narrow, activity-based KPIs may undermine holistic, person-centred provision and place a disproportionate administrative burden on smaller organisations. This is primarily evidence about mechanisms rather than causal effectiveness, but it suggests that funding a high-need place without supporting its civic infrastructure may create a predictable implementation failure. [UK government evidence scan](https://www.gov.uk/government/publications/impacts-of-public-services-being-delivered-by-civil-society-organisations/research-report-impacts-of-public-services-being-delivered-by-civil-society-organisations)
 
 </details>
 
@@ -92,9 +92,9 @@ Not all places were immediately ready to use substantial grants effectively. The
 
 ### 4. Sport: high inactivity does not guarantee participation
 
-A DCMS rapid review found that two well-designed neighbourhood interventions produced no significant effect on physical activity, partly because awareness and participation were low. Peer-led approaches were more promising, particularly where peer leaders were trained and engagement was sufficiently intensive.
+A published rapid review found that two well-designed neighbourhood interventions produced no significant effect on physical activity, partly because awareness and participation were low. Peer-led approaches were more promising, particularly where peer leaders were trained and engagement was sufficiently intensive.
 
-The same review found weak cost evidence and limited knowledge of distributional effects. New infrastructure may disproportionately benefit residents who are already better able to use it unless local barriers—such as safety, affordability, storage or health constraints—are addressed. [DCMS physical-activity review](https://www.gov.uk/government/publications/improving-physical-activity-and-reducing-physical-activity-inequalities-literature-review/improving-physical-activity-and-reducing-physical-activity-inequalities-literature-review)
+The same review found weak cost evidence and limited knowledge of distributional effects. New infrastructure may disproportionately benefit residents who are already better able to use it unless local barriers—such as safety, affordability, storage or health constraints—are addressed. [Physical-activity review](https://www.gov.uk/government/publications/improving-physical-activity-and-reducing-physical-activity-inequalities-literature-review/improving-physical-activity-and-reducing-physical-activity-inequalities-literature-review)
 
 </details>
 
@@ -105,7 +105,7 @@ The same review found weak cost evidence and limited knowledge of distributional
 
 The Culture and Heritage Capital programme reviewed approximately 3,500 papers and examined around 160 in full. It found credible health and wellbeing evidence for some forms of cultural engagement, but also substantial limitations: much of the research is observational, experimental samples are often small, geographical distribution is poorly understood and the valuation models generally exclude intervention costs.
 
-The evidence therefore supports cultural participation as a possible preventive mechanism. It does not establish that the places with the worst current health outcomes necessarily offer the highest marginal cultural return. [DCMS Culture and Heritage Capital review](https://assets.publishing.service.gov.uk/media/678e2ecf432c55fe2988f615/rpt_-_Frontier_Health_and_Wellbeing_Final_Report_09_12_24_accessible_final.pdf)
+The evidence therefore supports cultural participation as a possible preventive mechanism. It does not establish that the places with the worst current health outcomes necessarily offer the highest marginal cultural return. [Culture and Heritage Capital review](https://assets.publishing.service.gov.uk/media/678e2ecf432c55fe2988f615/rpt_-_Frontier_Health_and_Wellbeing_Final_Report_09_12_24_accessible_final.pdf)
 
 </details>
 
@@ -118,7 +118,7 @@ The What Works Centre for Local Economic Growth screened more than 1,000 broadba
 
 Provision alone did not guarantee productive use. Adoption, digital skills, complementary business investment and industrial composition affected the return. Some local growth reflected the arrival of skilled workers and firms, meaning that existing disadvantaged residents were not necessarily the main beneficiaries. [What Works Growth](https://whatworksgrowth.org/resource-library/broadband/)
 
-The evaluation of the UK Superfast Broadband Programme reinforces the point. Take-up and contractual gain-sharing materially affected value for money, while the additionality of public subsidy declined as commercial conditions changed. [DCMS Superfast Broadband evaluation](https://assets.publishing.service.gov.uk/media/5b7a7cc640f0b6433bf8e954/Superfast_Integrated_Report.pdf)
+The evaluation of the UK Superfast Broadband Programme reinforces the point. Take-up and contractual gain-sharing materially affected value for money, while the additionality of public subsidy declined as commercial conditions changed. [Superfast Broadband evaluation](https://assets.publishing.service.gov.uk/media/5b7a7cc640f0b6433bf8e954/Superfast_Integrated_Report.pdf)
 
 </details>
 
@@ -185,4 +185,4 @@ The policy goal is not to retreat from equity. It is to manage public value acti
 
 ---
 
-*This independent analytical exploration was prepared in a personal capacity using publicly available evidence. It does not represent government policy, official advice, or the views of the Department for Culture, Media and Sport or the UK Government.*
+*This independent analytical exploration was prepared in a personal capacity using publicly available evidence. It does not represent government policy, official advice, or the views of my employer.*

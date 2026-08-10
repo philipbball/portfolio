@@ -2,10 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const publications = [
-  { year: '2024', title: 'European and Asian Sovereign Wealth Funds: A Comparison', type: 'Research paper', note: 'Comparative research on institutional design, investment mandates and public purpose.' },
-  { year: '2011', title: 'Mixed Signals: To What Extent Does the UK Promote Sustainable Development?', type: 'Published research', note: 'An examination of the consistency between policy commitments and the incentives created by government action.' },
-  { year: '2009', title: "Jobseeker's Allowance and transitions into work", type: 'Economic research', note: 'Analysis of labour-market support and claimant outcomes.' },
-  { year: '2009', title: 'A linked postcode–region dataset for economic analysis', type: 'Data resource', note: 'Applied data work supporting geographical and regional analysis.' }
+  { year: '2024', title: 'European and Asian Sovereign Wealth Funds: A Comparison', type: 'Research paper', note: 'Comparative research on institutional design, investment mandates and public purpose.', url: 'https://ideas.repec.org/f/pba802.html' },
+  { year: '2011', title: 'Mixed Signals: To What Extent Does the UK Promote Sustainable Development?', type: 'Published research', note: 'An examination of the consistency between policy commitments and the incentives created by government action.', url: 'https://ideas.repec.org/f/pba802.html' },
+  { year: '2009', title: "Jobseeker's Allowance and transitions into work", type: 'Economic research', note: 'Analysis of labour-market support and claimant outcomes.', url: 'https://ideas.repec.org/f/pba802.html' },
+  { year: '2009', title: 'A linked postcode–region dataset for economic analysis', type: 'Data resource', note: 'Applied data work supporting geographical and regional analysis.', url: 'https://ideas.repec.org/f/pba802.html' }
 ];
 ---
 
@@ -13,9 +13,9 @@ const publications = [
   <div class="section-page">
     <span class="eyebrow">Research</span>
     <h1>Publications</h1>
-    <p class="intro">Selected work spanning public investment, sustainable development, labour markets and applied economic data. Full bibliographic records are available through my research profiles.</p>
+    <p class="intro">Selected work spanning public investment, sustainable development, labour markets and applied economic data. Titles link to my bibliographic research record while publisher-level links are being consolidated.</p>
     <div class="publication-list">
-      {publications.map(item => <article><div><small>{item.year}</small><span>{item.type}</span></div><div><h2>{item.title}</h2><p>{item.note}</p></div></article>)}
+      {publications.map(item => <article><div><small>{item.year}</small><span>{item.type}</span></div><div><h2><a href={item.url} target="_blank" rel="noreferrer">{item.title} ↗</a></h2><p>{item.note}</p></div></article>)}
     </div>
     <div class="profile-links">
       <a href="https://ideas.repec.org/f/pba802.html" target="_blank" rel="noreferrer">RePEc author profile ↗</a>
@@ -25,5 +25,5 @@ const publications = [
 </BaseLayout>
 
 <style>
-  .section-page{max-width:960px;margin:0 auto;padding:clamp(2.5rem,7vw,5rem) 1rem}.eyebrow,small{text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-size:.75rem;font-weight:800}.section-page>h1{font-size:clamp(2.7rem,7vw,5rem);letter-spacing:-.05em;margin:.5rem 0}.intro{font-size:1.15rem;line-height:1.7;color:var(--text-secondary);max-width:760px}.publication-list{margin-top:3rem}.publication-list article{display:grid;grid-template-columns:190px 1fr;gap:2rem;padding:1.5rem 0;border-top:1px solid var(--border)}.publication-list article>div:first-child{display:grid;align-content:start;gap:.35rem}.publication-list span,.publication-list p{color:var(--text-secondary)}.publication-list h2{margin:0;font-size:1.45rem}.publication-list p{line-height:1.6}.profile-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}.profile-links a{color:var(--accent);font-weight:750;text-decoration:none}@media(max-width:640px){.publication-list article{grid-template-columns:1fr;gap:.75rem}}
+  .section-page{width:min(var(--site-width),calc(100% - 2rem));margin:0 auto;padding:clamp(2.5rem,7vw,5rem) 0}.eyebrow,small{text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-size:.75rem;font-weight:800}.section-page>h1{font-size:clamp(2.7rem,7vw,5rem);line-height:.98;letter-spacing:-.05em;margin:.5rem 0}.intro{font-size:1.15rem;line-height:1.7;color:var(--text-secondary);max-width:760px}.publication-list{margin-top:3rem;max-width:var(--reading-width)}.publication-list article{display:grid;grid-template-columns:190px 1fr;gap:2rem;padding:1.5rem 0;border-top:1px solid var(--border)}.publication-list article>div:first-child{display:grid;align-content:start;gap:.35rem}.publication-list span,.publication-list p{color:var(--text-secondary)}.publication-list h2{margin:0;font-size:1.45rem}.publication-list h2 a{text-decoration:none}.publication-list h2 a:hover{color:var(--accent)}.publication-list p{line-height:1.6}.profile-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}.profile-links a{color:var(--accent);font-weight:750;text-decoration:none}@media(max-width:640px){.publication-list article{grid-template-columns:1fr;gap:.75rem}}
 </style>

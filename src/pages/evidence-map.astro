@@ -2,131 +2,103 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import studiesData from '../../public/data/evidence/studies.json';
 import pathwaysData from '../../public/data/evidence/pathways.json';
-import synthesisData from '../../public/data/evidence/synthesis.json';
-import protocol from '../../public/data/evidence/protocol.json';
 
 const labels = {
-  devolution: 'Devolution', 'local-decisions': 'Local decisions', integration: 'Integrated delivery', prevention: 'Prevention', outcomes: 'Public outcomes',
-  'fiscal-autonomy': 'Fiscal autonomy', investment: 'Local investment', growth: 'Growth', capacity: 'Local capacity', 'effective-devolution': 'Effective use of powers',
-  data: 'Timely data', accountability: 'Local accountability', performance: 'Performance', equalisation: 'Equalisation', fairness: 'Fairness between places',
-  stewardship: 'National stewardship', 'system-learning': 'System learning', 'culture-sport': 'Culture and sport', 'place-outcomes': 'Place outcomes'
+  devolution: 'Change in decision rights', 'local-decisions': 'Decisions closer to place', integration: 'Integrated delivery', prevention: 'Earlier intervention', outcomes: 'Public outcomes',
+  'fiscal-autonomy': 'Revenue responsibility', investment: 'Local investment', growth: 'Economic outcomes', capacity: 'Institutional capability', 'effective-devolution': 'Effective use of powers',
+  data: 'Timely data', accountability: 'Usable accountability', performance: 'Performance', equalisation: 'Equalisation', fairness: 'Fairness between places',
+  stewardship: 'System stewardship', 'system-learning': 'System learning', 'culture-sport': 'Culture and sport activity', 'place-outcomes': 'Place outcomes'
 };
+
 const groups = [
-  { id: 'services', title: 'Decisions, integration and prevention', description: 'How moving decisions closer to place might affect service design and outcomes.', ids: ['p1','p2','p3','p4'] },
-  { id: 'fiscal', title: 'Fiscal powers, investment and fairness', description: 'What fiscal autonomy can enable—and why equalisation remains important.', ids: ['p5','p6','p10'] },
-  { id: 'institutions', title: 'Capacity, data and accountability', description: 'The institutional conditions that shape whether devolved powers work in practice.', ids: ['p7','p8','p9','p11'] },
-  { id: 'sectors', title: 'Sector contribution to place', description: 'The evidence connecting culture and sport interventions to wider place outcomes.', ids: ['p12'] }
+  { title: 'Decision rights, integration and prevention', description: 'How changes in authority and coordination might travel through service design to outcomes.', ids: ['p1','p2','p3','p4'] },
+  { title: 'Resources, investment and distribution', description: 'How fiscal incentives and investment interact with growth, risk-sharing and fairness.', ids: ['p5','p6','p10'] },
+  { title: 'Capability, data and accountability', description: 'The institutional conditions that affect whether expected benefits materialise in practice.', ids: ['p7','p8','p9','p11'] },
+  { title: 'Portfolio-specific pathways', description: 'Where sector evidence needs to be built separately rather than inferred from a generic reform theory.', ids: ['p12'] }
 ];
-const evidencePayload = { pathways: pathwaysData.pathways, studies: studiesData.studies, labels, protocol };
+
+const studies = new Map(studiesData.studies.map((study) => [study.id, study]));
 ---
 
-<BaseLayout title="Evidence Lab — Devolution pathways" description="Accessible evidence map of devolution pathways, confidence, sources and research gaps">
-  <main class="evidence-shell">
-    <header class="evidence-hero">
-      <div><span class="eyebrow">Evidence Lab</span><h1>Devolution: what does the evidence support?</h1><p class="lede">A rapid assessment of the mechanisms connecting devolved powers to public outcomes—not a single headline claim.</p></div>
-      <div class="hero-badge"><span>Rapid Evidence Assessment</span><strong>Public evidence only</strong><small>Last updated 8 August 2026</small></div>
+<BaseLayout title="Public Value Evidence Lab — Phil Ball" description="A reusable evidence map for tracing expected benefits through mechanisms, conditions, indicators and outcomes">
+  <div class="evidence-shell">
+    <header class="hero">
+      <span class="eyebrow">Public Value Evidence Lab</span>
+      <h1>From expected benefits to realised value.</h1>
+      <p class="lede">Policy, investment and organisational reforms usually begin with an expected benefit. The difficult part is the chain in between. This lab makes that chain inspectable: <strong>mechanism → conditions → leading indicators → outcomes → learning.</strong></p>
+      <div class="scope-note"><strong>Purpose</strong><p>This is a public-source analytical framework for understanding evidence and implementation under uncertainty. It is designed to surface what is known, what is transferable and what needs to be monitored—not to label a policy or reform as politically right or wrong.</p></div>
     </header>
 
-    <section class="conclusion card" aria-labelledby="conclusion-title">
-      <span class="eyebrow">Conclusion up front</span>
-      <h2 id="conclusion-title">Benefits are conditional, not automatic.</h2>
-      <p>{synthesisData.overall.summary}</p>
-      <div class="decision-grid">
-        <div><small>Strongest finding</small><strong>Equalisation protects against divergence between unequal local tax bases.</strong></div>
-        <div><small>Key dependency</small><strong>Local capacity determines whether powers can be used effectively.</strong></div>
-        <div><small>Weakest claim</small><strong>Fiscal devolution alone cannot be assumed to produce growth.</strong></div>
+    <section class="principle card">
+      <span class="eyebrow">Working principle</span>
+      <h2>Expected benefits are hypotheses to manage, not assumptions to bank.</h2>
+      <div class="flow" aria-label="Active benefits management pathway">
+        <span>Expected benefit</span><i>→</i><span>Mechanism</span><i>→</i><span>Conditions</span><i>→</i><span>Lead indicators</span><i>→</i><span>Outcome</span><i>→</i><strong>Adapt and learn</strong>
       </div>
     </section>
 
-    <section class="map-layout">
-      <div class="map-column">
-        <details class="controls card">
-          <summary>Filter the evidence map <span>Optional</span></summary>
-          <div class="control-grid">
-            <label>Evidence confidence<select id="confidenceFilter"><option value="all">All ratings</option><option value="strong">Strong</option><option value="moderate">Moderate</option><option value="developing">Developing</option><option value="limited">Limited</option></select></label>
-            <label>Search pathways<input id="searchBox" type="search" placeholder="e.g. capacity or prevention" /></label>
-            <label>Available evidence<select id="evidenceView"><option value="all">Direct and indirect</option><option value="direct">Has direct evidence</option><option value="indirect">Has indirect evidence</option></select></label>
-          </div>
-          <div class="actions"><button id="resetBtn">Reset filters</button><button id="gapsBtn" aria-pressed="false">Show evidence gaps only</button></div>
-          <p class="filter-status" id="filterStatus" role="status" aria-live="polite"></p>
-        </details>
-
-        <section class="card pathway-map" aria-labelledby="map-title">
-          <div class="section-heading"><div><span class="eyebrow">Pathway map</span><h2 id="map-title">Select a causal pathway</h2><p>Each card reads from a starting condition to an intermediate or final result. Colour shows confidence in that connection.</p></div><div class="confidence-key" aria-label="Confidence key"><span><i class="dot strong"></i>Strong</span><span><i class="dot moderate"></i>Moderate</span><span><i class="dot developing"></i>Developing</span><span><i class="dot limited"></i>Limited</span></div></div>
-          <div id="pathwayGroups">
-            {groups.map(group => <section class="pathway-group"><header><h3>{group.title}</h3><p>{group.description}</p></header><div class="pathway-list">{pathwaysData.pathways.filter(p => group.ids.includes(p.id)).map(p =>
-              <button class={`pathway ${p.confidence}`} data-id={p.id} data-confidence={p.confidence} data-direct={String(p.directEvidence.length > 0)} data-indirect={String(p.indirectEvidence.length > 0)} data-search={`${labels[p.source]} ${labels[p.target]} ${p.label} ${p.synopsis}`.toLowerCase()} aria-pressed="false">
-                <span class="route"><strong>{labels[p.source]}</strong><span aria-hidden="true">→</span><strong>{labels[p.target]}</strong></span><span class="claim">{p.label}</span><span class="rating">{p.confidence} confidence</span>
-              </button>)}
-            </div></section>)}
-          </div>
-        </section>
+    <section class="applications">
+      <div class="section-heading"><span class="eyebrow">Reusable architecture</span><h2>One framework, different public-value questions.</h2><p>The evidence needed will differ by application, but the discipline is the same: separate the intended result from the causal pathway and the conditions needed to realise it.</p></div>
+      <div class="application-grid">
+        <article><strong>Public investment</strong><span>Additionality · delivery · distribution · long-run value</span></article>
+        <article><strong>Prevention</strong><span>Lead indicators · time lags · cross-budget benefits</span></article>
+        <article><strong>Institutional reform</strong><span>Decision rights · capability · accountability · transition</span></article>
+        <article><strong>AI and technology</strong><span>Adoption · workflow change · capability · realised productivity</span></article>
+        <article><strong>Place-based policy</strong><span>Need · readiness · mechanism · marginal value</span></article>
+        <article><strong>Service integration</strong><span>Coordination · access · outcomes · system cost</span></article>
       </div>
-
-      <aside class="detail-column">
-        <section class="card detail-card" id="detailCard" tabindex="-1" aria-labelledby="detailTitle">
-          <span class="evidence-chip neutral" id="detailRating">How to use this map</span>
-          <h2 id="detailTitle">Choose any pathway card</h2>
-          <p id="detailSynopsis">The selected card will be outlined and its conclusion, evidence gap and sources will appear here. Filters only change which assessed pathways are shown.</p>
-          <div id="detailGap" class="gap-box" hidden></div>
-          <div id="directBlock" class="source-block" hidden><h3>Direct evidence</h3><div id="directSources"></div></div>
-          <div id="indirectBlock" class="source-block" hidden><h3>Indirect or transferable evidence</h3><div id="indirectSources"></div></div>
-        </section>
-      </aside>
     </section>
 
-    <details class="card disclosure"><summary>Evidence gaps and future research</summary><div class="disclosure-body"><p>These are research needs implied by the evidence base, not strategic recommendations.</p><div class="challenge-grid">{synthesisData.futureChallenges.map(x => <article><h3>{x.challenge}</h3><p><strong>Current evidence:</strong> {x.whatEvidenceSays}</p><p><strong>Priority need:</strong> {x.evidenceNeed}</p></article>)}</div></div></details>
-    <details class="card disclosure"><summary>Rapid Evidence Assessment method and limitations</summary><div class="disclosure-body"><p><strong>Question:</strong> {protocol.question}</p><p><strong>Search approach:</strong> {protocol.searchApproach}</p><p><strong>Appraisal:</strong> {protocol.appraisal}</p><h3>Rapid-review limitations</h3><ul>{protocol.shortcutsAndBias.map(x => <li>{x}</li>)}</ul></div></details>
-    <script id="evidenceData" type="application/json" set:html={JSON.stringify(evidencePayload)}></script>
-  </main>
+    <section class="worked-example">
+      <div class="section-heading"><span class="eyebrow">Worked example 01 · Devolution and place</span><h2>What should implementation monitor along the pathway?</h2><p>This existing evidence set uses English and international research on devolution, integration, fiscal arrangements and institutional capability to demonstrate the framework. Confidence describes the evidence for a connection—not the desirability of the reform.</p></div>
 
-  <script>
-    const dataElement = document.querySelector('#evidenceData');
-    const data = JSON.parse(dataElement?.textContent || '{"pathways":[],"studies":[],"labels":{}}');
-    const pathways = new Map(data.pathways.map((pathway) => [pathway.id, pathway]));
-    const studies = new Map(data.studies.map((study) => [study.id, study]));
-    const buttons = [...document.querySelectorAll('.pathway')];
-    const confidenceFilter = document.querySelector('#confidenceFilter');
-    const evidenceView = document.querySelector('#evidenceView');
-    const searchBox = document.querySelector('#searchBox');
-    const gapsBtn = document.querySelector('#gapsBtn');
-    let gapsOnly = false;
+      <div class="groups">
+        {groups.map((group) => (
+          <section class="group card">
+            <header><h3>{group.title}</h3><p>{group.description}</p></header>
+            <div class="pathway-list">
+              {pathwaysData.pathways.filter((p) => group.ids.includes(p.id)).map((p) => (
+                <details class={`pathway confidence-${p.confidence}`}>
+                  <summary>
+                    <span class="route"><strong>{labels[p.source]}</strong><i aria-hidden="true">→</i><strong>{labels[p.target]}</strong></span>
+                    <b>{p.confidence} confidence</b>
+                  </summary>
+                  <div class="pathway-body">
+                    <h4>Evidence note</h4>
+                    <p>{p.synopsis}</p>
+                    <h4>What to learn or monitor</h4>
+                    <p>{p.gap}</p>
+                    {(p.directEvidence.length > 0 || p.indirectEvidence.length > 0) && <h4>Selected evidence</h4>}
+                    <div class="source-grid">
+                      {[...p.directEvidence.map((id) => ({id, kind: 'Direct / closer evidence'})), ...p.indirectEvidence.map((id) => ({id, kind: 'Indirect / transferable evidence'}))].map(({id,kind}) => {
+                        const source = studies.get(id);
+                        return source ? <article><small>{kind}</small><a href={source.url} target="_blank" rel="noreferrer"><strong>{source.title} ↗</strong></a><span>{source.authors} · {source.year}</span><p>{source.caveats}</p></article> : null;
+                      })}
+                    </div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
 
-    function escapeHtml(value = '') { return String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[character])); }
-    function sourceCard(id) {
-      const source = studies.get(id); if (!source) return '';
-      const quality = source.quality === 'not-yet-evaluable' ? 'Prospective evidence' : `${source.quality} quality`;
-      return `<article class="source-item"><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer"><strong>${escapeHtml(source.title)} ↗</strong></a><div class="source-meta">${escapeHtml(source.authors)} · ${source.year} · ${escapeHtml(quality)}</div><p>${escapeHtml(source.summary)}</p><details><summary>Study caveats</summary><p>${escapeHtml(source.caveats)}</p></details></article>`;
-    }
-    function selectPathway(id, moveFocus = true) {
-      const pathway = pathways.get(id); if (!pathway) return;
-      buttons.forEach(button => { const selected = button.dataset.id === id; button.classList.toggle('selected', selected); button.setAttribute('aria-pressed', String(selected)); });
-      const rating = document.querySelector('#detailRating'); rating.textContent = `${pathway.confidence[0].toUpperCase()}${pathway.confidence.slice(1)} confidence`; rating.className = `evidence-chip ${pathway.confidence}`;
-      document.querySelector('#detailTitle').textContent = `${data.labels[pathway.source]} → ${data.labels[pathway.target]}`;
-      document.querySelector('#detailSynopsis').textContent = pathway.synopsis;
-      const gap = document.querySelector('#detailGap'); gap.hidden = false; gap.innerHTML = `<strong>Main evidence gap</strong><p>${escapeHtml(pathway.gap)}</p>`;
-      const direct = document.querySelector('#directBlock'); const indirect = document.querySelector('#indirectBlock');
-      direct.hidden = pathway.directEvidence.length === 0; indirect.hidden = pathway.indirectEvidence.length === 0;
-      document.querySelector('#directSources').innerHTML = pathway.directEvidence.map(sourceCard).join('');
-      document.querySelector('#indirectSources').innerHTML = pathway.indirectEvidence.map(sourceCard).join('');
-      if (moveFocus && window.matchMedia('(max-width: 1050px)').matches) { const detail = document.querySelector('#detailCard'); detail.scrollIntoView({behavior:'smooth', block:'start'}); detail.focus({preventScroll:true}); }
-    }
-    function applyFilters() {
-      const confidence = confidenceFilter.value; const evidence = evidenceView.value; const query = searchBox.value.trim().toLowerCase(); let shown = 0;
-      buttons.forEach(button => { const visible = (confidence === 'all' || button.dataset.confidence === confidence) && (evidence === 'all' || button.dataset[evidence] === 'true') && (!query || button.dataset.search.includes(query)) && (!gapsOnly || ['developing','limited'].includes(button.dataset.confidence)); button.hidden = !visible; if (visible) shown += 1; });
-      document.querySelectorAll('.pathway-group').forEach(group => { group.hidden = ![...group.querySelectorAll('.pathway')].some(button => !button.hidden); });
-      document.querySelector('#filterStatus').textContent = `${shown} of ${buttons.length} pathways shown.`;
-    }
-    buttons.forEach(button => button.addEventListener('click', () => selectPathway(button.dataset.id)));
-    confidenceFilter.addEventListener('change', applyFilters); evidenceView.addEventListener('change', applyFilters); searchBox.addEventListener('input', applyFilters);
-    gapsBtn.addEventListener('click', () => { gapsOnly = !gapsOnly; gapsBtn.setAttribute('aria-pressed', String(gapsOnly)); gapsBtn.textContent = gapsOnly ? 'Show all pathways' : 'Show evidence gaps only'; applyFilters(); });
-    document.querySelector('#resetBtn').addEventListener('click', () => { confidenceFilter.value = 'all'; evidenceView.value = 'all'; searchBox.value = ''; gapsOnly = false; gapsBtn.setAttribute('aria-pressed','false'); gapsBtn.textContent = 'Show evidence gaps only'; applyFilters(); });
-    applyFilters();
-  </script>
+    <section class="how-to-use card">
+      <span class="eyebrow">How to read the lab</span>
+      <h2>Separate ambition, evidence and management response.</h2>
+      <div class="use-grid">
+        <article><strong>1 · Ambition</strong><p>What benefit is expected, for whom and over what period?</p></article>
+        <article><strong>2 · Evidence</strong><p>Which links have strong direct evidence, which are mixed, and which rely on transfer from other settings?</p></article>
+        <article><strong>3 · Conditions</strong><p>What capability, incentives, coordination, data or distributional safeguards must hold?</p></article>
+        <article><strong>4 · Monitoring</strong><p>Which leading indicators would tell us early whether the mechanism is actually operating?</p></article>
+        <article><strong>5 · Learning</strong><p>What evidence would justify scaling, redesigning, supporting, pausing or remediating an element?</p></article>
+        <article><strong>6 · Public value</strong><p>Track outcomes, costs, distribution, spillovers and opportunity cost rather than a single headline metric.</p></article>
+      </div>
+    </section>
+  </div>
 
   <style>
-    .evidence-shell{max-width:1320px;margin:0 auto;padding:2rem clamp(1rem,3vw,2.5rem) 4rem}.evidence-hero{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;padding:2rem 0 1rem}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:800;color:var(--accent)}.evidence-hero h1{font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-.055em;line-height:.98;margin:.55rem 0 1rem;max-width:920px}.lede{font-size:1.15rem;max-width:800px;color:var(--text-secondary);line-height:1.65}.hero-badge{min-width:220px;padding:1.2rem;border:1px solid var(--border);border-radius:18px;background:var(--bg-secondary)}.hero-badge span,.hero-badge small{display:block;color:var(--text-secondary)}.hero-badge strong{display:block;margin:.35rem 0}.card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;box-shadow:0 10px 35px rgba(20,32,51,.06)}.conclusion{padding:clamp(1.25rem,3vw,2rem);border-top:5px solid var(--accent)}.conclusion h2{font-size:clamp(1.8rem,4vw,3.2rem);letter-spacing:-.035em;margin:.35rem 0}.conclusion>p{max-width:950px;color:var(--text-secondary);font-size:1.04rem;line-height:1.65}.decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:1.5rem;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}.decision-grid div{display:grid;gap:.35rem;padding:1rem;background:var(--bg-primary)}.decision-grid small{color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;font-weight:750}.map-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(320px,.8fr);gap:18px;align-items:start;margin-top:18px}.map-column{display:grid;gap:18px}.controls{padding:0}.controls>summary,.disclosure>summary{cursor:pointer;list-style:none;padding:1.1rem 1.25rem;font-weight:800;display:flex;justify-content:space-between;align-items:center}.controls>summary::-webkit-details-marker,.disclosure>summary::-webkit-details-marker{display:none}.controls>summary::after,.disclosure>summary::after{content:'+';font-size:1.5rem;color:var(--accent)}.controls[open]>summary::after,.disclosure[open]>summary::after{content:'−'}.controls>summary span{font-size:.75rem;color:var(--text-secondary);font-weight:600;margin-left:auto;margin-right:1rem}.control-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 1.1rem}.controls label{font-size:.85rem;font-weight:700}.controls select,.controls input,.actions button{width:100%;margin-top:.4rem;border:1px solid var(--border);border-radius:11px;background:var(--bg-primary);color:var(--text-primary);padding:.72rem .8rem;font:inherit}.actions{display:flex;gap:8px;padding:12px 1.1rem 0}.actions button{width:auto;margin:0}.actions button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}.filter-status{padding:0 1.1rem 1rem;margin:.7rem 0 0;color:var(--text-secondary);font-size:.85rem}.section-heading{display:flex;justify-content:space-between;gap:1.5rem;padding:1.2rem}.section-heading h2,.detail-card h2{margin:.25rem 0;font-size:1.6rem}.section-heading p{color:var(--text-secondary);max-width:620px;margin:0}.confidence-key{display:flex;gap:10px;flex-wrap:wrap;font-size:.78rem;color:var(--text-secondary);min-width:210px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}.dot.strong{background:#16845b}.dot.moderate{background:#b7791f}.dot.developing{background:#c65d21}.dot.limited{background:#c33226}.pathway-group{padding:1.2rem;border-top:1px solid var(--border)}.pathway-group>header{display:grid;grid-template-columns:1fr 1.2fr;gap:1rem;margin-bottom:1rem}.pathway-group h3{margin:0;font-size:1.08rem}.pathway-group header p{color:var(--text-secondary);font-size:.88rem;margin:0}.pathway-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}.pathway{position:relative;text-align:left;padding:1rem;border:2px solid var(--border);border-left:7px solid var(--rating);border-radius:13px;background:var(--bg-primary);color:var(--text-primary)}.pathway.strong{--rating:#16845b}.pathway.moderate{--rating:#b7791f}.pathway.developing{--rating:#c65d21}.pathway.limited{--rating:#c33226}.pathway:hover,.pathway:focus-visible{border-color:var(--rating);outline:3px solid color-mix(in srgb,var(--rating) 25%,transparent)}.pathway.selected{border-color:var(--rating);box-shadow:0 0 0 4px color-mix(in srgb,var(--rating) 30%,transparent)}.route{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}.route>span{color:var(--rating);font-size:1.25rem}.claim{display:block;margin:.5rem 0;color:var(--text-secondary);font-size:.88rem}.rating{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--rating)}.detail-card{position:sticky;top:92px;padding:1.25rem;scroll-margin-top:85px}.detail-card:focus{outline:none}.detail-card>p{color:var(--text-secondary);line-height:1.6}.evidence-chip{display:inline-block;border-radius:999px;padding:.4rem .65rem;font-size:.75rem;font-weight:800}.evidence-chip.strong{background:#d9f5e8;color:#0b6040}.evidence-chip.moderate{background:#fff0bf;color:#704800}.evidence-chip.developing{background:#ffe2d2;color:#85370e}.evidence-chip.limited{background:#ffdcd8;color:#861d17}.evidence-chip.neutral{background:var(--accent-soft);color:var(--accent)}.gap-box{margin:1rem 0;padding:.9rem;border-left:4px solid #c33226;background:var(--bg-primary);border-radius:8px}.gap-box p{margin:.35rem 0 0;color:var(--text-secondary)}.source-block{margin-top:1.2rem}.source-block h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary)}.source-item{padding:.9rem 0;border-top:1px solid var(--border)}.source-item a{color:var(--accent);text-decoration:none}.source-item p{font-size:.88rem;color:var(--text-secondary);line-height:1.5;margin:.45rem 0}.source-meta{font-size:.75rem;color:var(--text-secondary);margin-top:.25rem}.source-item details{font-size:.82rem;color:var(--text-secondary)}.disclosure{margin-top:18px}.disclosure-body{padding:0 1.25rem 1.25rem;color:var(--text-secondary);line-height:1.6}.challenge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.challenge-grid article{padding:1rem;background:var(--bg-primary);border:1px solid var(--border);border-radius:12px}.challenge-grid h3{color:var(--text-primary);margin:0}.challenge-grid p{font-size:.9rem}.disclosure li{margin-bottom:.5rem}
-    @media(max-width:1050px){.evidence-hero,.map-layout{grid-template-columns:1fr}.detail-column{grid-row:1}.detail-card{position:static}.decision-grid{grid-template-columns:1fr}.pathway-map{grid-row:3}.controls{grid-row:2}}
-    @media(max-width:700px){.evidence-shell{padding-top:1rem}.evidence-hero h1{font-size:clamp(2.35rem,12vw,3.3rem)}.hero-badge{display:none}.control-grid,.pathway-list,.challenge-grid{grid-template-columns:1fr}.actions{flex-direction:column}.actions button{width:100%}.section-heading,.pathway-group>header{grid-template-columns:1fr;display:grid}.confidence-key{min-width:0}.pathway-group{padding:1rem}.decision-grid strong{font-size:.95rem}}
+    .evidence-shell{width:min(var(--site-width),calc(100% - 2rem));margin:0 auto;padding:0 0 5rem}.hero{padding:clamp(3rem,7vw,6rem) 0 2rem}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--accent)}.hero h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.92;letter-spacing:-.06em;margin:.6rem 0 1.2rem;max-width:1000px}.lede{font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.7;color:var(--text-secondary);max-width:900px}.scope-note{margin-top:1.5rem;padding:1.1rem 1.2rem;border-left:4px solid var(--accent);background:var(--bg-secondary);border-radius:10px}.scope-note p{margin:.35rem 0;color:var(--text-secondary);line-height:1.6}.card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:18px}.principle{padding:clamp(1.25rem,3vw,2rem);border-top:5px solid var(--accent)}.principle h2,.section-heading h2,.how-to-use h2{font-size:clamp(1.8rem,4vw,3.2rem);letter-spacing:-.04em;margin:.4rem 0 1rem}.flow{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}.flow span,.flow strong{padding:.65rem .75rem;background:var(--bg-primary);border:1px solid var(--border);border-radius:9px}.flow i{font-style:normal;color:var(--accent);font-weight:900}.applications,.worked-example,.how-to-use{margin-top:clamp(3rem,7vw,5.5rem)}.section-heading{max-width:900px;margin-bottom:1.5rem}.section-heading p{color:var(--text-secondary);line-height:1.65}.application-grid,.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}.application-grid article,.use-grid article{padding:1rem;border:1px solid var(--border);border-radius:13px;background:var(--bg-secondary);display:grid;gap:.35rem}.application-grid span,.use-grid p{color:var(--text-secondary);line-height:1.5;margin:0}.groups{display:grid;gap:1rem}.group{overflow:hidden}.group>header{padding:1.1rem 1.2rem;border-bottom:1px solid var(--border)}.group h3{margin:0 0 .35rem;font-size:1.3rem}.group header p{margin:0;color:var(--text-secondary)}.pathway-list{display:grid}.pathway{border-bottom:1px solid var(--border)}.pathway:last-child{border-bottom:0}.pathway summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.2rem;cursor:pointer;list-style:none}.pathway summary::-webkit-details-marker{display:none}.route{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}.route i{font-style:normal;color:var(--accent)}.pathway summary>b{font-size:.75rem;text-transform:capitalize;padding:.35rem .5rem;border:1px solid var(--border);border-radius:999px;white-space:nowrap}.pathway-body{padding:0 1.2rem 1.25rem;background:var(--bg-primary);border-top:1px solid var(--border)}.pathway-body h4{margin:1rem 0 .4rem}.pathway-body>p{color:var(--text-secondary);line-height:1.6}.source-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem}.source-grid article{padding:.8rem;border:1px solid var(--border);border-radius:10px;background:var(--bg-secondary);display:grid;gap:.35rem}.source-grid small{color:var(--accent);font-weight:800;text-transform:uppercase}.source-grid a{color:var(--text-primary);text-decoration:none}.source-grid a:hover{color:var(--accent)}.source-grid span,.source-grid p{font-size:.82rem;color:var(--text-secondary);line-height:1.45;margin:0}.how-to-use{padding:1.3rem}.how-to-use h2{font-size:2rem}@media(max-width:800px){.application-grid,.use-grid{grid-template-columns:1fr 1fr}.source-grid{grid-template-columns:1fr}.pathway summary{align-items:flex-start;flex-direction:column}}@media(max-width:560px){.application-grid,.use-grid{grid-template-columns:1fr}.flow{align-items:stretch;flex-direction:column}.flow i{transform:rotate(90deg);align-self:center}}
   </style>
 </BaseLayout>

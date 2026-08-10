@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-08",
+  "lastUpdated": "2026-08-10",
   "ratingScale": {
     "strong": "Multiple relevant high-quality studies or syntheses point in the same direction, with plausible mechanisms and limited serious contradiction.",
     "moderate": "Relevant evidence supports the mechanism, but important limitations, heterogeneity or transferability issues remain.",
@@ -15,7 +15,7 @@
       "confidence": "moderate",
       "directEvidence": ["beis-2021-devolved-institutions", "nao-2026-devolution"],
       "indirectEvidence": ["oecd-2019-decentralisation", "channa-faguet-2016"],
-      "synopsis": "There is credible evidence that decentralisation changes decision rights, leadership and local responsiveness. Evidence that this automatically improves final outcomes is weaker and depends on institutional design.",
+      "synopsis": "There is credible evidence that decentralisation changes decision rights, leadership and local responsiveness. Evidence linking that change to final outcomes is more conditional and depends on institutional design.",
       "gap": "More causal English evidence linking specific devolved powers to decisions, outputs and final outcomes."
     },
     {
@@ -70,7 +70,7 @@
       "confidence": "limited",
       "directEvidence": ["thornton-2007-growth", "rodriguez-pose-ezcurra-2011", "martinez-vazquez-mcNab-2003"],
       "indirectEvidence": [],
-      "synopsis": "The direct fiscal-decentralisation-to-growth literature is mixed. Studies report null, negative and context-dependent relationships, so a simple claim that fiscal devolution raises growth is not supported.",
+      "synopsis": "The direct fiscal-decentralisation-to-growth literature is mixed, with null, negative and context-dependent estimates. It therefore gives limited confidence in any generic growth assumption and points toward testing specific investment channels, local conditions and time horizons during implementation.",
       "gap": "Identify specific investment channels, local conditions and time horizons rather than estimating one average decentralisation effect."
     },
     {
@@ -92,7 +92,7 @@
       "confidence": "moderate",
       "directEvidence": ["nao-2026-devolution"],
       "indirectEvidence": ["worldbank-2005-service-delivery", "faguet-2014-governance", "oecd-2019-transparency"],
-      "synopsis": "Accountability is a credible mechanism through which decentralisation can improve responsiveness and performance, but it can be weakened by opaque responsibilities, weak scrutiny or poor information.",
+      "synopsis": "Accountability is a credible mechanism through which decentralisation can affect responsiveness and performance, but its operation depends on clear responsibilities, capable scrutiny and usable information.",
       "gap": "Test which local accountability mechanisms change behaviour and outcomes in English mayoral systems."
     },
     {
@@ -103,7 +103,7 @@
       "confidence": "moderate",
       "directEvidence": ["nao-2026-devolution"],
       "indirectEvidence": ["oecd-2019-transparency"],
-      "synopsis": "Timely, comparable and trustworthy data are repeatedly identified as necessary for accountability and learning. Evidence supports transparency as a governance mechanism, but more information is not automatically useful if measures are noisy or poorly aligned.",
+      "synopsis": "Timely, comparable and trustworthy data are repeatedly identified as necessary for accountability and learning. More information is not automatically useful if measures are noisy, poorly aligned or create excessive reporting burden.",
       "gap": "Evaluate which indicators support earlier corrective action without producing gaming, excessive reporting burden or misleading league tables."
     },
     {
@@ -114,7 +114,7 @@
       "confidence": "strong",
       "directEvidence": ["ifs-2018-funding-divergence", "ifs-2019-tax-devolution"],
       "indirectEvidence": ["oecd-2019-decentralisation"],
-      "synopsis": "The distributional mechanism is well established: local tax bases differ substantially and fiscal divergence can re-emerge after initial equalisation. Devolution design therefore needs explicit equalisation and risk-sharing choices.",
+      "synopsis": "Local tax bases differ substantially and fiscal divergence can re-emerge after initial equalisation. This makes equalisation and risk-sharing important implementation variables when local revenue responsibility changes.",
       "gap": "Estimate behavioural responses to alternative equalisation rules under the new English devolution settlement."
     },
     {
@@ -125,7 +125,7 @@
       "confidence": "developing",
       "directEvidence": ["nao-2026-devolution"],
       "indirectEvidence": ["oecd-2019-decentralisation", "oecd-2025-place-governance"],
-      "synopsis": "Evidence favours clear allocation of responsibilities and a continuing central role in standards, fiscal rules, equalisation and system learning. The optimal boundary between local autonomy and national stewardship is context-specific.",
+      "synopsis": "Public evidence identifies continuing central functions in standards, fiscal rules, equalisation and system learning. The effective boundary between local discretion and national stewardship is context-specific and should be monitored rather than inferred from organisational form alone.",
       "gap": "Compare stewardship models that preserve local discretion while enabling intervention where performance or fiscal sustainability deteriorates."
     },
     {
@@ -136,7 +136,7 @@
       "confidence": "limited",
       "directEvidence": [],
       "indirectEvidence": [],
-      "synopsis": "This initial REA does not yet provide enough verified sector-specific evidence to rate the causal contribution of devolved cultural and sporting investment to wider place outcomes.",
+      "synopsis": "This initial REA does not yet provide enough verified sector-specific evidence to estimate the causal contribution of devolved cultural and sporting investment to wider place outcomes with confidence.",
       "gap": "Run a dedicated sector REA separating participation, wellbeing, local economic, civic and distributional outcomes."
     }
   ]
