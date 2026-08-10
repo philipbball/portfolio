@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --site-width: 1200px;
+  --reading-width: 980px;
+  --page-gutter: clamp(1rem, 3vw, 2rem);
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -47,9 +53,9 @@ button {
 }
 
 .nav-container {
-  max-width: 1200px;
+  max-width: var(--site-width);
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem var(--page-gutter);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -112,12 +118,12 @@ main {
 .footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
-  padding: 2rem 1rem;
+  padding: 2rem var(--page-gutter);
   margin-top: 4rem;
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: var(--site-width);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
