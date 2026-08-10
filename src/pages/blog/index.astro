@@ -7,59 +7,30 @@ const linkedInGroups = [
     title: 'AI, productivity and economic change',
     description: 'Posts on the gap between task-level AI gains and realised productivity, and what that implies for organisations and economic policy.',
     posts: [
-      {
-        title: 'AI productivity and organisational design',
-        description: 'Why faster task completion does not automatically translate into higher system-level productivity—and why organisational design, coordination and review matter.',
-        url: 'https://www.linkedin.com/posts/philipbball_ai-productivity-futureofwork-share-7441537202976804864-wkfS/'
-      },
-      {
-        title: 'AI productivity: reading the emerging economic evidence',
-        description: 'Reflections on the evidence base for AI productivity gains, including what aggregate estimates can and cannot tell us about realised economic value.',
-        url: 'https://www.linkedin.com/posts/philipbball_ai-productivity-economics-share-7446925771790737408-764V/'
-      },
-      {
-        title: 'AI productivity and economic policy',
-        description: 'What uneven adoption, complementary investment and institutional capability mean for translating AI diffusion into broader economic gains.',
-        url: 'https://www.linkedin.com/posts/philipbball_ai-productivity-economicpolicy-activity-7437107149161324544-t1B4'
-      }
+      { title: 'AI productivity and organisational design', description: 'Why faster task completion does not automatically translate into higher system-level productivity—and why organisational design, coordination and review matter.', url: 'https://www.linkedin.com/posts/philipbball_ai-productivity-futureofwork-share-7441537202976804864-wkfS/' },
+      { title: 'AI productivity: reading the emerging economic evidence', description: 'Reflections on the evidence base for AI productivity gains, including what aggregate estimates can and cannot tell us about realised economic value.', url: 'https://www.linkedin.com/posts/philipbball_ai-productivity-economics-share-7446925771790737408-764V/' },
+      { title: 'AI productivity and economic policy', description: 'What uneven adoption, complementary investment and institutional capability mean for translating AI diffusion into broader economic gains.', url: 'https://www.linkedin.com/posts/philipbball_ai-productivity-economicpolicy-activity-7437107149161324544-t1B4' }
     ]
   },
   {
     title: 'Responsible AI, institutions and public services',
     description: 'Posts about the institutional conditions around AI: capacity, governance, accountability, literacy and the gap between national ambition and delivery contexts.',
     posts: [
-      {
-        title: 'The AI devolution fault line',
-        description: 'A visual exploration of the gap between national AI ambition and local public-service delivery, and why capability, governance and implementation conditions matter.',
-        url: 'https://www.linkedin.com/posts/philipbball_the-ai-devolution-fault-line-ugcPost-7485235169386401792-FeuO/',
-        label: 'Visual essay'
-      },
-      {
-        title: 'AI detection, critical AI literacy and academic integrity',
-        description: 'Why responsible adoption in education needs more than detection: critical literacy, transparent rules and assessment design remain central.',
-        url: 'https://www.linkedin.com/posts/philipbball_aidetection-criticalailiteracy-academicintegrity-share-7487310113775546368-HK8S/'
-      }
+      { title: 'The AI devolution fault line', description: 'A visual exploration of the gap between national AI ambition and local public-service delivery, and why capability, governance and implementation conditions matter.', url: 'https://www.linkedin.com/posts/philipbball_the-ai-devolution-fault-line-ugcPost-7485235169386401792-FeuO/', label: 'Visual essay' },
+      { title: 'AI detection, critical AI literacy and academic integrity', description: 'Why responsible adoption in education needs more than detection: critical literacy, transparent rules and assessment design remain central.', url: 'https://www.linkedin.com/posts/philipbball_aidetection-criticalailiteracy-academicintegrity-share-7487310113775546368-HK8S/' }
     ]
   },
   {
     title: 'Public value, fairness and opportunity',
     description: 'Writing about who gets access to valued institutions and opportunities—and why distribution, social infrastructure and fairness are part of public value.',
     posts: [
-      {
-        title: 'Who gets to swim?',
-        description: 'A public-value lens on access, social infrastructure and the distribution of opportunity.',
-        url: 'https://www.linkedin.com/posts/philipbball_whogetstoswim-publicvalue-socialinfrastructure-activity-7485975960576565248-yYee'
-      }
+      { title: 'Who gets to swim?', description: 'A public-value lens on access, social infrastructure and the distribution of opportunity.', url: 'https://www.linkedin.com/posts/philipbball_whogetstoswim-publicvalue-socialinfrastructure-activity-7485975960576565248-yYee' }
     ]
   }
 ];
 
 const adjacentPosts = [
-  {
-    title: 'Climate risk, climate finance and insurance',
-    description: 'An adjacent strand connecting resilience, risk allocation, finance and sustainability.',
-    url: 'https://www.linkedin.com/posts/philipbball_climaterisk-climatefinance-insurance-activity-7471700045789204480-X9eu'
-  }
+  { title: 'Climate risk, climate finance and insurance', description: 'An adjacent strand connecting resilience, risk allocation, finance and sustainability.', url: 'https://www.linkedin.com/posts/philipbball_climaterisk-climatefinance-insurance-activity-7471700045789204480-X9eu' }
 ];
 
 const authoredPosts = [
@@ -95,17 +66,12 @@ const authoredPosts = [
 
     <section class="section-block">
       <div class="section-heading"><div><span class="eyebrow">Selected LinkedIn writing</span><h2>Shorter public posts, grouped by theme</h2><p>LinkedIn remains the original publication location for these posts; this page provides a stable thematic index rather than reproducing the feed.</p></div></div>
-
       {linkedInGroups.map(group => (
         <div class="topic-group">
           <div class="topic-intro"><h3>{group.title}</h3><p>{group.description}</p></div>
           <div class="post-grid">
             {group.posts.map(post => (
-              <article class="post-card">
-                <small>{post.label || 'LinkedIn'}</small>
-                <h4><a href={post.url} target="_blank" rel="noreferrer">{post.title} <span aria-hidden="true">↗</span></a></h4>
-                <p>{post.description}</p>
-              </article>
+              <article class="post-card"><small>{post.label || 'LinkedIn'}</small><h4><a href={post.url} target="_blank" rel="noreferrer">{post.title} <span aria-hidden="true">↗</span></a></h4><p>{post.description}</p></article>
             ))}
           </div>
         </div>
@@ -114,9 +80,7 @@ const authoredPosts = [
 
     <section class="section-block adjacent">
       <div class="section-heading"><div><span class="eyebrow">Connected strand</span><h2>Climate, resilience and sustainable finance</h2><p>Related to the core portfolio through risk, resilience and public value, but kept distinct from the main AI/institutions thread.</p></div></div>
-      <div class="post-grid">
-        {adjacentPosts.map(post => <article class="post-card"><small>LinkedIn · Adjacent</small><h4><a href={post.url} target="_blank" rel="noreferrer">{post.title} <span aria-hidden="true">↗</span></a></h4><p>{post.description}</p></article>)}
-      </div>
+      <div class="post-grid">{adjacentPosts.map(post => <article class="post-card"><small>LinkedIn · Adjacent</small><h4><a href={post.url} target="_blank" rel="noreferrer">{post.title} <span aria-hidden="true">↗</span></a></h4><p>{post.description}</p></article>)}</div>
     </section>
 
     <section class="section-block archive-section">
