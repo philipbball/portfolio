@@ -3,5 +3,199 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL;
 
-const pathways = [];
+const pathways = [
+  {
+    theme: 'Power and governance',
+    pathway: 'Local decision-making → better tailoring and coordination',
+    confidence: 'Moderate',
+    evidence: 'Public evidence supports the importance of local information and cross-sector coordination, while showing that authority, capability and relationships affect whether proximity translates into better delivery.',
+    monitor: ['Clarity of decision rights', 'Cross-boundary coordination', 'Local analytical and delivery capability'],
+    sources: [
+      ['BEIS/Warwick — Evaluation of Devolved Institutions (2021)', 'https://assets.publishing.service.gov.uk/media/609c083ae90e0735772d9c91/evaluation-devolved-institutions.pdf'],
+      ['OECD — Making Decentralisation Work (2019)', 'https://doi.org/10.1787/g2g9faa7-en']
+    ]
+  },
+  {
+    theme: 'Growth and functional devolution',
+    pathway: 'Coherent local powers and investment → stronger local growth',
+    confidence: 'Moderate · mixed evidence',
+    evidence: 'English and international estimates vary substantially. Some English programmes show gains while others show limited or uneven effects, suggesting that institutional maturity, functional geography, additionality and local economic conditions matter.',
+    monitor: ['Productivity and employment separately', 'Additionality and displacement', 'Distribution of gains within the functional region'],
+    sources: [
+      ['Alonso and Andrews — City Deals and economic performance (2024)', 'https://orca.cardiff.ac.uk/id/eprint/161102/1/City%20deals%20paper%20-%20Alonso%20and%20Andrews.doc.pdf'],
+      ['Sweeney — Devolution and growth in English city regions (2026)', 'https://doi.org/10.1177/00420980251408416'],
+      ['OECD — Place-Based Policies for the Future (2025)', 'https://doi.org/10.1787/e5ff6716-en']
+    ]
+  },
+  {
+    theme: 'Integrated services',
+    pathway: 'Greater alignment across services → better access and outcomes',
+    confidence: 'Moderate',
+    evidence: 'The evidence is more consistently positive for access, user experience and selected population-health outcomes than for system-wide costs or cashable savings. Greater Manchester is an important English case, but its maturity and reform package limit simple transfer.',
+    monitor: ['Access and user experience', 'Population outcomes', 'Total system cost and where costs move'],
+    sources: [
+      ['Britteon et al. — Effect of devolution on health (2022)', 'https://doi.org/10.1016/S2468-2667(22)00198-0'],
+      ['Baxter et al. — Integrated care systematic review (2018)', 'https://doi.org/10.1186/s12913-018-3161-3']
+    ]
+  },
+  {
+    theme: 'Prevention',
+    pathway: 'Earlier intervention → lower later harm and stronger public value',
+    confidence: 'Moderate for selected interventions',
+    evidence: 'Some preventive programmes generate substantial long-run benefits, but this evidence does not by itself establish that a particular governance arrangement will shift resources upstream or create cashable savings.',
+    monitor: ['Lead indicators before final outcomes move', 'Time to benefit', 'Which organisation or budget captures later benefits'],
+    sources: [
+      ['IFS — Long-run effects of Sure Start (2025)', 'https://ifs.org.uk/publications/short-and-medium-term-effects-sure-start-childrens-outcomes'],
+      ['Masters et al. — Public-health return on investment review (2017)', 'https://doi.org/10.1136/jech-2016-208141']
+    ]
+  },
+  {
+    theme: 'Fiscal incentives',
+    pathway: 'Greater revenue responsibility → stronger incentives and funding certainty',
+    confidence: 'Moderate · design-dependent',
+    evidence: 'Revenue autonomy can strengthen the link between local decisions and resources, but volatility, unequal tax bases and risks outside local control make equalisation and risk-sharing part of the mechanism rather than an afterthought.',
+    monitor: ['Revenue volatility', 'Exposure to shocks outside local control', 'Equalisation and reset effects on incentives'],
+    sources: [
+      ['IFS — Reforming local government funding (2024)', 'https://ifs.org.uk/publications/reforming-local-government-funding-england-issues-and-options'],
+      ['OECD — Fiscal federalism good practices (2020)', 'https://doi.org/10.1787/89cd0319-en']
+    ]
+  },
+  {
+    theme: 'Fairness and spatial equity',
+    pathway: 'Local flexibility plus redistribution → fairer spatial outcomes',
+    confidence: 'Low–Moderate',
+    evidence: 'The evidence does not support assuming a single distributional effect. Strong institutions and redistribution can limit divergence, while English evidence also indicates that gains can concentrate in stronger districts or groups.',
+    monitor: ['Within-region distribution, not only averages', 'Comparable service capacity', 'Who benefits from growth and investment'],
+    sources: [
+      ['Sweeney — Devolution and growth in English city regions (2026)', 'https://doi.org/10.1177/00420980251408416'],
+      ['Rodríguez-Pose and Ezcurra — Regional disparities (2010)', 'https://doi.org/10.1093/jeg/lbp049']
+    ]
+  },
+  {
+    theme: 'Accountability',
+    pathway: 'Clearer responsibility and usable information → stronger accountability',
+    confidence: 'Moderate',
+    evidence: 'Evidence from England and internationally suggests that transparency is most useful when information is understandable, responsibility is clear, scrutiny has capacity and there are meaningful consequences. More reporting alone is not the same as stronger accountability.',
+    monitor: ['Legibility of responsibilities', 'Scrutiny capacity', 'Reporting burden and metric gaming'],
+    sources: [
+      ['NAO — English devolution deals (2016)', 'https://www.nao.org.uk/reports/english-devolution-deals/'],
+      ['Ferraz and Finan — Public audits and elections (2008)', 'https://doi.org/10.1162/qjec.2008.123.2.703']
+    ]
+  },
+  {
+    theme: 'Capability and readiness',
+    pathway: 'Institutional capability → effective use of new powers and resources',
+    confidence: 'High',
+    evidence: 'Capability is one of the most consistent findings across English audits, evaluations and international synthesis. It is better treated as an investable part of implementation than as a fixed characteristic that some places simply have or lack.',
+    monitor: ['Analytical, commercial and digital capacity', 'Workforce and leadership resilience', 'Scrutiny and partnership capability'],
+    sources: [
+      ['NAO — Devolution in England: funding and accountability (2026)', 'https://www.nao.org.uk/reports/devolution-in-england-funding-and-accountability/'],
+      ['OECD — Regional Governance in OECD Countries (2022)', 'https://doi.org/10.1787/4d7c6483-en']
+    ]
+  },
+  {
+    theme: 'Strategic centre',
+    pathway: 'A more strategic centre → effective local discretion and system stewardship',
+    confidence: 'Low for effects of organisational size',
+    evidence: 'Comparative evidence supports continuing central functions in standards, equalisation, interoperable data, assurance, system risk and learning. There is much less direct evidence linking the size of the centre itself to better outcomes.',
+    monitor: ['Duplication and decision time', 'Quality of national standards and shared data', 'System resilience and escalation capability'],
+    sources: [
+      ['NAO — Devolution in England: funding and accountability (2026)', 'https://www.nao.org.uk/reports/devolution-in-england-funding-and-accountability/'],
+      ['OECD — Steering from the Centre (2014)', 'https://doi.org/10.1787/5jxswcfs4s5g-en']
+    ]
+  },
+  {
+    theme: 'Public bodies',
+    pathway: 'Changing where public-body functions sit → better delivery or public value',
+    confidence: 'Very low direct evidence',
+    evidence: 'Existing evidence is mainly about choosing and overseeing delivery models rather than estimating the effects of moving specific functions between organisations or tiers. Baselines and function-specific tests therefore matter particularly strongly.',
+    monitor: ['Baseline cost and performance', 'Independence and specialist capability', 'Transition costs and service continuity'],
+    sources: [
+      ['NAO — Central oversight of arm’s-length bodies (2021)', 'https://www.nao.org.uk/reports/central-oversight-of-arms-length-bodies/']
+    ]
+  }
+];
 ---
+
+<BaseLayout title="Rewiring the State — implementation evidence" description="A public-source evidence map of what to monitor as the expected benefits of devolution and institutional reform are implemented">
+  <div class="page-shell">
+    <header class="hero">
+      <span class="eyebrow">Public-source evidence project · August 2026</span>
+      <h1>Rewiring the State: what should implementation watch?</h1>
+      <p class="lede">The Cabinet Statement sets a direction of travel toward greater devolution, integration and changes in how the state operates. This project asks a narrower analytical question: <strong>what conditions, assumptions and indicators should be monitored if the expected benefits are to materialise?</strong></p>
+      <div class="scope-note">
+        <strong>Scope</strong>
+        <p>This is a personal evidence-method demonstration using publicly available sources. It does not assess the political desirability of the reform, recommend for or against it, or represent government policy, official advice or a departmental position.</p>
+      </div>
+      <div class="hero-links">
+        <a href="https://www.gov.uk/government/publications/rewiring-the-state-cabinet-statement" target="_blank" rel="noreferrer">Read the Cabinet Statement on GOV.UK ↗</a>
+        <a href={`${base}downloads/rewiring-the-state-evidence-table.csv`} download>Download evidence table</a>
+        <a href={`${base}downloads/rewiring-the-state-search-screening-log.csv`} download>Download screening log</a>
+      </div>
+    </header>
+
+    <section class="message card">
+      <span class="eyebrow">Implementation message</span>
+      <h2>Expected benefits need active management, not passive assumption.</h2>
+      <p>Public evidence is stronger for some links in the theory of change than for others. The practical implication is not a verdict on the direction of policy. It is to make the expected-benefit pathways explicit, identify where evidence is transferable or uncertain, monitor leading as well as final indicators, and adapt implementation when assumptions are not borne out.</p>
+      <div class="message-grid">
+        <article><small>Relatively stronger evidence</small><strong>Capability, coherent responsibilities and usable accountability</strong></article>
+        <article><small>Promising direct evidence</small><strong>Integrated health and service alignment, particularly Greater Manchester</strong></article>
+        <article><small>More mixed evidence</small><strong>Aggregate growth and the distribution of gains between and within places</strong></article>
+        <article><small>Largest evidence gaps</small><strong>Effects of changing the strategic centre or relocating public-body functions</strong></article>
+      </div>
+    </section>
+
+    <section class="framework">
+      <div class="section-heading"><span class="eyebrow">Active benefits management</span><h2>From stated ambition to realised public value</h2><p>For each expected benefit, ask the same sequence of questions rather than waiting for a final outcome measure.</p></div>
+      <div class="flow" aria-label="Expected benefit management framework">
+        <span>Expected benefit</span><i>→</i><span>Mechanism</span><i>→</i><span>Conditions</span><i>→</i><span>Lead indicators</span><i>→</i><span>Outcomes</span><i>→</i><strong>Adapt and learn</strong>
+      </div>
+    </section>
+
+    <section class="pathways" aria-labelledby="pathways-title">
+      <div class="section-heading"><span class="eyebrow">Evidence by benefit pathway</span><h2 id="pathways-title">What the evidence can—and cannot—tell us</h2><p>Confidence refers to the body of public evidence for the pathway, not to the desirability of the policy.</p></div>
+      <div class="pathway-grid">
+        {pathways.map((item) => (
+          <details class="card pathway-card">
+            <summary>
+              <span><small>{item.theme}</small><strong>{item.pathway}</strong></span>
+              <b>{item.confidence}</b>
+            </summary>
+            <div class="pathway-body">
+              <h3>What public evidence suggests</h3>
+              <p>{item.evidence}</p>
+              <h3>What implementation should monitor</h3>
+              <ul>{item.monitor.map((x) => <li>{x}</li>)}</ul>
+              <h3>Selected sources</h3>
+              <ul class="sources">{item.sources.map(([name,url]) => <li><a href={url} target="_blank" rel="noreferrer">{name} ↗</a></li>)}</ul>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="monitoring">
+      <div class="section-heading"><span class="eyebrow">A reusable approach</span><h2>Monitor the chain, not just the destination.</h2><p>The same discipline applies beyond devolution: public investment, prevention, AI adoption, service integration and other reforms all involve expected benefits whose causal assumptions can fail during delivery.</p></div>
+      <ol>
+        <li><strong>Specify the expected benefit.</strong><span>State what should improve, for whom and over what period.</span></li>
+        <li><strong>Make the mechanism explicit.</strong><span>Describe how the change is expected to produce that benefit.</span></li>
+        <li><strong>Identify enabling conditions and risks.</strong><span>Capability, incentives, data, coordination, distribution and transition can all matter.</span></li>
+        <li><strong>Track leading indicators.</strong><span>Do not wait for lagging outcomes to discover that the mechanism was not operating.</span></li>
+        <li><strong>Separate confidence from ambition.</strong><span>A desired benefit can remain important even where evidence is uncertain; uncertainty should change monitoring and learning.</span></li>
+        <li><strong>Adapt deliberately.</strong><span>Use evidence to scale, redesign, support, pause or remediate elements as implementation develops.</span></li>
+      </ol>
+    </section>
+
+    <section class="method card">
+      <span class="eyebrow">Method and limits</span>
+      <h2>Rapid evidence assessment</h2>
+      <p>The underlying assessment searched academic and official sources on 9 August 2026 and logged 58 records, of which 39 were included after screening. Sources were appraised separately for quality, directness and transferability. This is a rapid assessment rather than an exhaustive systematic review; bundled reforms, short follow-up periods and differences between international systems limit attribution and transferability.</p>
+      <p>The evidence table and screening log are published to make those judgements inspectable. The Cabinet Statement is linked to its canonical GOV.UK source rather than redistributed here.</p>
+    </section>
+  </div>
+
+  <style>
+    .page-shell{width:min(var(--site-width),calc(100% - 2rem));margin:0 auto;padding:0 0 5rem}.hero{padding:clamp(3rem,7vw,6rem) 0 2rem}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--accent)}.hero h1{font-size:clamp(2.7rem,7vw,6rem);line-height:.94;letter-spacing:-.055em;margin:.6rem 0 1.2rem;max-width:1050px}.lede{font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.7;color:var(--text-secondary);max-width:900px}.scope-note{margin-top:1.5rem;padding:1.1rem 1.2rem;border-left:4px solid var(--accent);background:var(--bg-secondary);border-radius:10px}.scope-note p{margin:.35rem 0;color:var(--text-secondary);line-height:1.6}.hero-links{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.25rem}.hero-links a{padding:.65rem .8rem;border:1px solid var(--border);border-radius:10px;color:var(--text-primary);text-decoration:none;font-weight:700}.hero-links a:hover{border-color:var(--accent);color:var(--accent)}.card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:18px}.message{padding:clamp(1.4rem,4vw,2.4rem);border-top:5px solid var(--accent)}.message h2,.section-heading h2,.method h2{font-size:clamp(1.9rem,4vw,3.5rem);line-height:1.05;letter-spacing:-.04em;margin:.45rem 0 1rem}.message>p,.section-heading p,.method p{color:var(--text-secondary);line-height:1.65;max-width:900px}.message-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1.3rem}.message-grid article{padding:1rem;border:1px solid var(--border);border-radius:11px;background:var(--bg-primary);display:grid;gap:.3rem}.message-grid small{color:var(--accent);font-weight:800;text-transform:uppercase}.framework,.pathways,.monitoring,.method{margin-top:clamp(3.5rem,8vw,6rem)}.section-heading{max-width:900px}.flow{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap;margin-top:1.3rem}.flow span,.flow strong{padding:.7rem .8rem;border:1px solid var(--border);border-radius:10px;background:var(--bg-secondary)}.flow i{font-style:normal;font-weight:900;color:var(--accent)}.pathway-grid{display:grid;gap:.75rem;margin-top:1.4rem}.pathway-card{overflow:hidden}.pathway-card summary{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.2rem;padding:1rem 1.2rem;cursor:pointer;list-style:none}.pathway-card summary::-webkit-details-marker{display:none}.pathway-card summary>span{display:grid;gap:.3rem}.pathway-card summary small{color:var(--accent);font-weight:800;text-transform:uppercase}.pathway-card summary>b{font-size:.75rem;padding:.4rem .55rem;border:1px solid var(--border);border-radius:999px;text-align:center}.pathway-body{padding:0 1.2rem 1.3rem;border-top:1px solid var(--border);background:var(--bg-primary)}.pathway-body h3{font-size:1rem;margin:1rem 0 .4rem}.pathway-body p,.pathway-body li{color:var(--text-secondary);line-height:1.55}.pathway-body ul{padding-left:1.15rem}.sources{list-style:none!important;padding-left:0!important;display:flex;gap:.5rem;flex-wrap:wrap}.sources a{color:var(--text-primary);text-decoration:none;border-bottom:1px solid var(--border)}.sources a:hover{color:var(--accent);border-color:var(--accent)}.monitoring ol{list-style:none;padding:0;margin-top:1.2rem;display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}.monitoring li{padding:1rem;border-top:3px solid var(--accent);background:var(--bg-secondary);border-radius:11px;display:grid;gap:.35rem}.monitoring li span{color:var(--text-secondary);line-height:1.5}.method{padding:1.4rem}.method h2{font-size:2rem}@media(max-width:750px){.message-grid,.monitoring ol{grid-template-columns:1fr}.pathway-card summary{grid-template-columns:1fr}.pathway-card summary>b{justify-self:start}.flow{align-items:stretch;flex-direction:column}.flow i{transform:rotate(90deg);align-self:center}}
+  </style>
+</BaseLayout>
