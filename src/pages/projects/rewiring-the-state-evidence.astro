@@ -3,371 +3,199 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL;
 
-const departments = {
-  co: 'Cabinet Office', dcms: 'Department for Culture, Media and Sport', dbt: 'Department for Business and Trade',
-  dfe: 'Department for Education', dhsc: 'Department of Health and Social Care', dft: 'Department for Transport', dwp: 'Department for Work and Pensions',
-  dsit: 'Department for Science, Innovation and Technology', hmt: 'HM Treasury', mhclg: 'Ministry of Housing, Communities and Local Government'
-};
-
-const portfolios = {
-  youth: 'Children, youth and families', civil: 'Civil society and communities', culture: 'Arts and culture',
-  heritage: 'Heritage', sport: 'Sport and physical activity', visitor: 'Visitor economy',
-  creative: 'Creative industries', digital: 'Digital infrastructure', transport: 'Transport',
-  housing: 'Housing and planning', skills: 'Skills and employment', health: 'Health and social care',
-  finance: 'Local government finance', bodies: 'Public bodies and regulation', data: 'Data and digital government'
-};
-
-const claims = [
+const pathways = [
   {
-    id: 'tailoring', theme: 'Power and governance', proposition: 'Local power improves tailoring and coordination',
-    judgement: 'Supported, conditionally', confidence: 'Moderate', balance: 'supportive',
-    conclusion: 'Local information and cross-sector coordination can improve service design, but authority, capability and relationships matter more than proximity alone.',
-    mechanism: 'Local knowledge and joined-up decisions', conditions: ['Clear responsibility', 'Capability', 'Cross-boundary coordination'],
-    outcomes: ['Better matching', 'Integrated delivery'], direct: 1, indirect: 4,
-    portfolios: ['youth','civil','culture','heritage','sport','visitor','creative','digital','transport','housing','skills','health'],
-    departments: ['mhclg','dcms','dhsc','dfe','dft','dsit'],
+    theme: 'Power and governance',
+    pathway: 'Local decision-making → better tailoring and coordination',
+    confidence: 'Moderate',
+    evidence: 'Public evidence supports the importance of local information and cross-sector coordination, while showing that authority, capability and relationships affect whether proximity translates into better delivery.',
+    monitor: ['Clarity of decision rights', 'Cross-boundary coordination', 'Local analytical and delivery capability'],
     sources: [
-      {name: 'BEIS/Warwick — Evaluation of Devolved Institutions (2021)', url: 'https://assets.publishing.service.gov.uk/media/609c083ae90e0735772d9c91/evaluation-devolved-institutions.pdf', kind: 'Direct England'},
-      {name: 'OECD — Making Decentralisation Work (2019)', url: 'https://doi.org/10.1787/g2g9faa7-en', kind: 'International transfer'}
-    ],
-    transfer: 'Comparable systems support the mechanism, but responsibility allocation, fiscal autonomy and subnational scale must be matched to England.'
+      ['BEIS/Warwick — Evaluation of Devolved Institutions (2021)', 'https://assets.publishing.service.gov.uk/media/609c083ae90e0735772d9c91/evaluation-devolved-institutions.pdf'],
+      ['OECD — Making Decentralisation Work (2019)', 'https://doi.org/10.1787/g2g9faa7-en']
+    ]
   },
   {
-    id: 'growth', theme: 'Growth and functional devolution', proposition: 'Devolution accelerates growth',
-    judgement: 'Mixed / not established generally', confidence: 'Moderate', balance: 'mixed',
-    conclusion: 'English estimates conflict. Some first-wave City Deals show gains, while other designs find null or uneven effects and stronger gains in already-productive places.',
-    mechanism: 'Coherent local investment and agglomeration', conditions: ['Mature institutions', 'Functional geography', 'Additionality'],
-    outcomes: ['Productivity', 'Employment', 'Spatial distribution'], direct: 2, indirect: 6,
-    portfolios: ['culture','heritage','visitor','creative','digital','transport','housing','skills','finance'],
-    departments: ['mhclg','hmt','dbt','dft','dcms','dsit','dfe'],
+    theme: 'Growth and functional devolution',
+    pathway: 'Coherent local powers and investment → stronger local growth',
+    confidence: 'Moderate · mixed evidence',
+    evidence: 'English and international estimates vary substantially. Some English programmes show gains while others show limited or uneven effects, suggesting that institutional maturity, functional geography, additionality and local economic conditions matter.',
+    monitor: ['Productivity and employment separately', 'Additionality and displacement', 'Distribution of gains within the functional region'],
     sources: [
-      {name: 'Alonso and Andrews — City Deals and economic performance (2024)', url: 'https://orca.cardiff.ac.uk/id/eprint/161102/1/City%20deals%20paper%20-%20Alonso%20and%20Andrews.doc.pdf', kind: 'Direct England'},
-      {name: 'Sweeney — Devolution and growth in English city regions (2026)', url: 'https://doi.org/10.1177/00420980251408416', kind: 'Direct England'},
-      {name: 'OECD — Place-Based Policies for the Future (2025)', url: 'https://doi.org/10.1787/e5ff6716-en', kind: 'International synthesis'}
-    ],
-    transfer: 'International place-policy and fiscal studies are useful for mechanisms, but effects depend heavily on autonomy, institutional quality and economic geography.'
+      ['Alonso and Andrews — City Deals and economic performance (2024)', 'https://orca.cardiff.ac.uk/id/eprint/161102/1/City%20deals%20paper%20-%20Alonso%20and%20Andrews.doc.pdf'],
+      ['Sweeney — Devolution and growth in English city regions (2026)', 'https://doi.org/10.1177/00420980251408416'],
+      ['OECD — Place-Based Policies for the Future (2025)', 'https://doi.org/10.1787/e5ff6716-en']
+    ]
   },
   {
-    id: 'integration', theme: 'Integrated services and prevention', proposition: 'Integrated services improve outcomes',
-    judgement: 'Partly supported', confidence: 'Moderate', balance: 'supportive',
-    conclusion: 'Evidence is more positive for access, user experience and selected population-health outcomes than for system-wide costs or cashable savings.',
-    mechanism: 'Alignment across services and budgets', conditions: ['Shared data', 'Trusted relationships', 'Sufficient resources'],
-    outcomes: ['Access', 'User experience', 'Population health'], direct: 5, indirect: 2,
-    portfolios: ['youth','civil','sport','health','skills','housing','data'], departments: ['dhsc','mhclg','dfe','dcms','dwp','dsit'],
+    theme: 'Integrated services',
+    pathway: 'Greater alignment across services → better access and outcomes',
+    confidence: 'Moderate',
+    evidence: 'The evidence is more consistently positive for access, user experience and selected population-health outcomes than for system-wide costs or cashable savings. Greater Manchester is an important English case, but its maturity and reform package limit simple transfer.',
+    monitor: ['Access and user experience', 'Population outcomes', 'Total system cost and where costs move'],
     sources: [
-      {name: 'Britteon et al. — Effect of devolution on health (2022)', url: 'https://doi.org/10.1016/S2468-2667(22)00198-0', kind: 'Direct England'},
-      {name: 'Baxter et al. — Integrated care systematic review (2018)', url: 'https://doi.org/10.1186/s12913-018-3161-3', kind: 'UK and international'}
-    ],
-    transfer: 'Greater Manchester is the most promising direct case, but its maturity, relationships and additional funding constrain generalisation.'
+      ['Britteon et al. — Effect of devolution on health (2022)', 'https://doi.org/10.1016/S2468-2667(22)00198-0'],
+      ['Baxter et al. — Integrated care systematic review (2018)', 'https://doi.org/10.1186/s12913-018-3161-3']
+    ]
   },
   {
-    id: 'prevention', theme: 'Integrated services and prevention', proposition: 'Prevention reduces later costs',
-    judgement: 'Supported for selected interventions', confidence: 'Moderate', balance: 'supportive',
-    conclusion: 'Some preventive programmes produce substantial long-run benefits; this does not show that devolving budgets automatically shifts spending upstream or creates cashable savings.',
-    mechanism: 'Earlier action reduces later harm', conditions: ['Protected time horizon', 'Cross-budget attribution', 'Benefits tracked'],
-    outcomes: ['Long-run wellbeing', 'Avoided demand', 'Public value'], direct: 2, indirect: 1,
-    portfolios: ['youth','civil','sport','health','housing'], departments: ['dhsc','dfe','dcms','mhclg','dwp'],
+    theme: 'Prevention',
+    pathway: 'Earlier intervention → lower later harm and stronger public value',
+    confidence: 'Moderate for selected interventions',
+    evidence: 'Some preventive programmes generate substantial long-run benefits, but this evidence does not by itself establish that a particular governance arrangement will shift resources upstream or create cashable savings.',
+    monitor: ['Lead indicators before final outcomes move', 'Time to benefit', 'Which organisation or budget captures later benefits'],
     sources: [
-      {name: 'IFS — Long-run effects of Sure Start (2025)', url: 'https://ifs.org.uk/publications/short-and-medium-term-effects-sure-start-childrens-outcomes', kind: 'Direct England'},
-      {name: 'Masters et al. — Public-health return on investment review (2017)', url: 'https://doi.org/10.1136/jech-2016-208141', kind: 'International synthesis'}
-    ],
-    transfer: 'Programme effects transfer more readily than claims about which tier of government will commission or sustain prevention.'
+      ['IFS — Long-run effects of Sure Start (2025)', 'https://ifs.org.uk/publications/short-and-medium-term-effects-sure-start-childrens-outcomes'],
+      ['Masters et al. — Public-health return on investment review (2017)', 'https://doi.org/10.1136/jech-2016-208141']
+    ]
   },
   {
-    id: 'fiscal', theme: 'Fiscal devolution', proposition: 'Fiscal devolution strengthens incentives',
-    judgement: 'Plausible, design-dependent', confidence: 'Moderate', balance: 'conditional',
-    conclusion: 'Revenue autonomy can improve incentives when it matches spending responsibility; volatility and unequal tax bases require equalisation, insurance and transition rules.',
-    mechanism: 'Visible link between decisions and resources', conditions: ['Revenue–spending alignment', 'Equalisation', 'Shock protection'],
-    outcomes: ['Incentives', 'Funding certainty', 'Fiscal resilience'], direct: 3, indirect: 2,
-    portfolios: ['finance','housing','transport','skills','culture','digital'], departments: ['hmt','mhclg','dft','dfe','dcms','dsit'],
+    theme: 'Fiscal incentives',
+    pathway: 'Greater revenue responsibility → stronger incentives and funding certainty',
+    confidence: 'Moderate · design-dependent',
+    evidence: 'Revenue autonomy can strengthen the link between local decisions and resources, but volatility, unequal tax bases and risks outside local control make equalisation and risk-sharing part of the mechanism rather than an afterthought.',
+    monitor: ['Revenue volatility', 'Exposure to shocks outside local control', 'Equalisation and reset effects on incentives'],
     sources: [
-      {name: 'IFS — Reforming local government funding (2024)', url: 'https://ifs.org.uk/publications/reforming-local-government-funding-england-issues-and-options', kind: 'Direct England'},
-      {name: 'OECD — Fiscal federalism good practices (2020)', url: 'https://doi.org/10.1787/89cd0319-en', kind: 'International synthesis'}
-    ],
-    transfer: 'Fiscal evidence must be coded for real tax autonomy, equalisation, revenue composition and risks outside local control.'
+      ['IFS — Reforming local government funding (2024)', 'https://ifs.org.uk/publications/reforming-local-government-funding-england-issues-and-options'],
+      ['OECD — Fiscal federalism good practices (2020)', 'https://doi.org/10.1787/89cd0319-en']
+    ]
   },
   {
-    id: 'equity', theme: 'Equalisation and spatial equity', proposition: 'Devolution improves spatial equity',
-    judgement: 'Uncertain and conditional', confidence: 'Low–Moderate', balance: 'mixed',
-    conclusion: 'Strong institutions and redistribution can limit divergence, but English evidence also indicates that gains may concentrate in stronger districts within combined authorities.',
-    mechanism: 'Local flexibility plus redistribution', conditions: ['Transparent equalisation', 'Within-place distribution', 'Comparable service capacity'],
-    outcomes: ['Fair access', 'Regional convergence', 'Within-region equity'], direct: 2, indirect: 2,
-    portfolios: ['finance','housing','skills','transport','youth','health'], departments: ['hmt','mhclg','dwp','dfe','dhsc','dft'],
+    theme: 'Fairness and spatial equity',
+    pathway: 'Local flexibility plus redistribution → fairer spatial outcomes',
+    confidence: 'Low–Moderate',
+    evidence: 'The evidence does not support assuming a single distributional effect. Strong institutions and redistribution can limit divergence, while English evidence also indicates that gains can concentrate in stronger districts or groups.',
+    monitor: ['Within-region distribution, not only averages', 'Comparable service capacity', 'Who benefits from growth and investment'],
     sources: [
-      {name: 'Sweeney — Devolution and growth in English city regions (2026)', url: 'https://doi.org/10.1177/00420980251408416', kind: 'Direct England'},
-      {name: 'Rodríguez-Pose and Ezcurra — Regional disparities (2010)', url: 'https://doi.org/10.1093/jeg/lbp049', kind: 'International econometric'}
-    ],
-    transfer: 'Constitutional structure and redistributive capacity are decisive; international averages should not be applied directly to English administrative devolution.'
+      ['Sweeney — Devolution and growth in English city regions (2026)', 'https://doi.org/10.1177/00420980251408416'],
+      ['Rodríguez-Pose and Ezcurra — Regional disparities (2010)', 'https://doi.org/10.1093/jeg/lbp049']
+    ]
   },
   {
-    id: 'accountability', theme: 'Accountability, outcomes and data', proposition: 'Local democratic accountability improves',
-    judgement: 'Supported as a mechanism', confidence: 'Moderate', balance: 'conditional',
-    conclusion: 'Transparent, actionable information and real consequences can change behaviour. Elections alone are insufficient when responsibility is opaque or scrutiny is weak.',
-    mechanism: 'Information reaches people able to act', conditions: ['Legible responsibility', 'Independent audit', 'Usable measures'],
-    outcomes: ['Scrutiny', 'Behaviour change', 'Trust'], direct: 4, indirect: 3,
-    portfolios: ['civil','youth','data','bodies','finance'], departments: ['mhclg','hmt','co','dcms','dsit'],
+    theme: 'Accountability',
+    pathway: 'Clearer responsibility and usable information → stronger accountability',
+    confidence: 'Moderate',
+    evidence: 'Evidence from England and internationally suggests that transparency is most useful when information is understandable, responsibility is clear, scrutiny has capacity and there are meaningful consequences. More reporting alone is not the same as stronger accountability.',
+    monitor: ['Legibility of responsibilities', 'Scrutiny capacity', 'Reporting burden and metric gaming'],
     sources: [
-      {name: 'NAO — English devolution deals (2016)', url: 'https://www.nao.org.uk/reports/english-devolution-deals/', kind: 'Direct England'},
-      {name: 'Ferraz and Finan — Public audits and elections (2008)', url: 'https://doi.org/10.1162/qjec.2008.123.2.703', kind: 'International mechanism'}
-    ],
-    transfer: 'Global experiments test information and accountability mechanisms, not the overall English governance model.'
+      ['NAO — English devolution deals (2016)', 'https://www.nao.org.uk/reports/english-devolution-deals/'],
+      ['Ferraz and Finan — Public audits and elections (2008)', 'https://doi.org/10.1162/qjec.2008.123.2.703']
+    ]
   },
   {
-    id: 'capability', theme: 'Capability and readiness', proposition: 'Strong local capability is a prerequisite',
-    judgement: 'Supported', confidence: 'High', balance: 'supportive',
-    conclusion: 'Capability is one of the most consistent findings across English audits, evaluations and international synthesis—and should be treated as part of the reform, not assumed in advance.',
-    mechanism: 'Institutions can use powers and coordinate delivery', conditions: ['Analytical capacity', 'Commercial and digital skills', 'Scrutiny capacity'],
-    outcomes: ['Effective use of powers', 'Delivery resilience', 'Learning'], direct: 3, indirect: 3,
-    portfolios: Object.keys(portfolios), departments: Object.keys(departments),
+    theme: 'Capability and readiness',
+    pathway: 'Institutional capability → effective use of new powers and resources',
+    confidence: 'High',
+    evidence: 'Capability is one of the most consistent findings across English audits, evaluations and international synthesis. It is better treated as an investable part of implementation than as a fixed characteristic that some places simply have or lack.',
+    monitor: ['Analytical, commercial and digital capacity', 'Workforce and leadership resilience', 'Scrutiny and partnership capability'],
     sources: [
-      {name: 'NAO — Devolution in England: funding and accountability (2026)', url: 'https://www.nao.org.uk/reports/devolution-in-england-funding-and-accountability/', kind: 'Direct England'},
-      {name: 'OECD — Regional Governance in OECD Countries (2022)', url: 'https://doi.org/10.1787/4d7c6483-en', kind: 'International synthesis'}
-    ],
-    transfer: 'The capability principle transfers well, but the specific functions and viable subnational scale remain context-dependent.'
+      ['NAO — Devolution in England: funding and accountability (2026)', 'https://www.nao.org.uk/reports/devolution-in-england-funding-and-accountability/'],
+      ['OECD — Regional Governance in OECD Countries (2022)', 'https://doi.org/10.1787/4d7c6483-en']
+    ]
   },
   {
-    id: 'centre', theme: 'Strategic centre and public bodies', proposition: 'A smaller strategic centre improves performance',
-    judgement: 'Evidence gap', confidence: 'Low', balance: 'gap',
-    conclusion: 'Evidence supports a different centre—clear responsibilities, common data, equalisation, assurance and stewardship—not headcount reduction as a proxy for outcomes.',
-    mechanism: 'Central stewardship enables local discretion', conditions: ['National standards', 'Interoperable data', 'System-risk oversight'],
-    outcomes: ['Less duplication', 'Resilience', 'System learning'], direct: 2, indirect: 2,
-    portfolios: ['bodies','data','finance','civil','digital'], departments: ['co','hmt','mhclg','dsit','dcms'],
+    theme: 'Strategic centre',
+    pathway: 'A more strategic centre → effective local discretion and system stewardship',
+    confidence: 'Low for effects of organisational size',
+    evidence: 'Comparative evidence supports continuing central functions in standards, equalisation, interoperable data, assurance, system risk and learning. There is much less direct evidence linking the size of the centre itself to better outcomes.',
+    monitor: ['Duplication and decision time', 'Quality of national standards and shared data', 'System resilience and escalation capability'],
     sources: [
-      {name: 'NAO — Devolution in England: funding and accountability (2026)', url: 'https://www.nao.org.uk/reports/devolution-in-england-funding-and-accountability/', kind: 'Direct England'},
-      {name: 'OECD — Steering from the Centre (2014)', url: 'https://doi.org/10.1787/5jxswcfs4s5g-en', kind: 'International cases'}
-    ],
-    transfer: 'Comparative cases support central coordination and learning functions, but do not identify an optimal centre size.'
+      ['NAO — Devolution in England: funding and accountability (2026)', 'https://www.nao.org.uk/reports/devolution-in-england-funding-and-accountability/'],
+      ['OECD — Steering from the Centre (2014)', 'https://doi.org/10.1787/5jxswcfs4s5g-en']
+    ]
   },
   {
-    id: 'alb', theme: 'Strategic centre and public bodies', proposition: 'Moving arm’s-length-body functions improves delivery',
-    judgement: 'Evidence gap', confidence: 'Very low', balance: 'gap',
-    conclusion: 'Existing evidence concerns choosing and overseeing delivery models, not the net effects of moving functions to places or departments. Function-by-function tests are needed.',
-    mechanism: 'Responsibility follows the effective delivery scale', conditions: ['Independence test', 'Baseline cost and performance', 'Transition risk'],
-    outcomes: ['Clearer roles', 'Delivery quality', 'Public value'], direct: 1, indirect: 0,
-    portfolios: ['bodies','culture','heritage','sport','digital','health'], departments: ['co','hmt','dcms','dsit','dhsc','mhclg'],
+    theme: 'Public bodies',
+    pathway: 'Changing where public-body functions sit → better delivery or public value',
+    confidence: 'Very low direct evidence',
+    evidence: 'Existing evidence is mainly about choosing and overseeing delivery models rather than estimating the effects of moving specific functions between organisations or tiers. Baselines and function-specific tests therefore matter particularly strongly.',
+    monitor: ['Baseline cost and performance', 'Independence and specialist capability', 'Transition costs and service continuity'],
     sources: [
-      {name: 'NAO — Central oversight of arm’s-length bodies (2021)', url: 'https://www.nao.org.uk/reports/central-oversight-of-arms-length-bodies/', kind: 'Relevant UK evidence'}
-    ],
-    transfer: 'No identified international comparison cleanly estimates the effect of the proposed machinery change.'
+      ['NAO — Central oversight of arm’s-length bodies (2021)', 'https://www.nao.org.uk/reports/central-oversight-of-arms-length-bodies/']
+    ]
   }
 ];
-
-const payload = { claims, departments, portfolios };
 ---
 
-<BaseLayout title="Rewiring the State — evidence assessment" description="An independent rapid evidence assessment of the causal claims behind Rewiring the State">
-  <div class="rea-shell">
+<BaseLayout title="Rewiring the State — implementation evidence" description="A public-source evidence map of what to monitor as the expected benefits of devolution and institutional reform are implemented">
+  <div class="page-shell">
     <header class="hero">
-      <div>
-        <span class="eyebrow">Full rapid evidence assessment · 39 included sources</span>
-        <h1>Rewiring the State: what does the evidence support?</h1>
-        <p class="lede">An independent, cross-government assessment of when devolution, integration and fiscal reform are most likely to create public value.</p>
+      <span class="eyebrow">Public-source evidence project · August 2026</span>
+      <h1>Rewiring the State: what should implementation watch?</h1>
+      <p class="lede">The Cabinet Statement sets a direction of travel toward greater devolution, integration and changes in how the state operates. This project asks a narrower analytical question: <strong>what conditions, assumptions and indicators should be monitored if the expected benefits are to materialise?</strong></p>
+      <div class="scope-note">
+        <strong>Scope</strong>
+        <p>This is a personal evidence-method demonstration using publicly available sources. It does not assess the political desirability of the reform, recommend for or against it, or represent government policy, official advice or a departmental position.</p>
       </div>
-      <aside class="scope-note"><strong>Interpretation note</strong><span>This is a personal evidence-method demonstration using public sources. It is not official policy advice or a departmental position.</span></aside>
+      <div class="hero-links">
+        <a href="https://www.gov.uk/government/publications/rewiring-the-state-cabinet-statement" target="_blank" rel="noreferrer">Read the Cabinet Statement on GOV.UK ↗</a>
+        <a href={`${base}downloads/rewiring-the-state-evidence-table.csv`} download>Download evidence table</a>
+        <a href={`${base}downloads/rewiring-the-state-search-screening-log.csv`} download>Download screening log</a>
+      </div>
     </header>
 
-    <section class="bottom-line card" aria-labelledby="bottom-line-title">
-      <span class="eyebrow">Conclusion up front</span>
-      <h2 id="bottom-line-title">Directionally supported—but only as a conditional institution-building strategy.</h2>
-      <p>Moving some decisions closer to place can improve tailoring, coordination and selected outcomes. The evidence does not show that devolution alone reliably creates growth, savings, equity or accountability. Coherent powers, capability, equalisation, usable accountability and transition design determine whether flexibility creates public value.</p>
-      <div class="headline-grid">
-        <article><small>Strongest support</small><strong>Capability, coherent responsibilities and usable accountability</strong></article>
-        <article><small>Most promising direct evidence</small><strong>Integrated health and service alignment in Greater Manchester</strong></article>
-        <article><small>Biggest contradiction</small><strong>Growth estimates are mixed and gains may favour stronger places</strong></article>
-        <article><small>Largest gap</small><strong>Effects of changing the centre or moving public-body functions</strong></article>
+    <section class="message card">
+      <span class="eyebrow">Implementation message</span>
+      <h2>Expected benefits need active management, not passive assumption.</h2>
+      <p>Public evidence is stronger for some links in the theory of change than for others. The practical implication is not a verdict on the direction of policy. It is to make the expected-benefit pathways explicit, identify where evidence is transferable or uncertain, monitor leading as well as final indicators, and adapt implementation when assumptions are not borne out.</p>
+      <div class="message-grid">
+        <article><small>Relatively stronger evidence</small><strong>Capability, coherent responsibilities and usable accountability</strong></article>
+        <article><small>Promising direct evidence</small><strong>Integrated health and service alignment, particularly Greater Manchester</strong></article>
+        <article><small>More mixed evidence</small><strong>Aggregate growth and the distribution of gains between and within places</strong></article>
+        <article><small>Largest evidence gaps</small><strong>Effects of changing the strategic centre or relocating public-body functions</strong></article>
       </div>
     </section>
 
-    <nav class="jump-nav" aria-label="On this page">
-      <a href="#landscape">Explore evidence</a><a href="#claims">Claim conclusions</a><a href="#implementation">Implementation</a><a href="#downloads">Downloads</a><a href="#method">Method</a>
-    </nav>
+    <section class="framework">
+      <div class="section-heading"><span class="eyebrow">Active benefits management</span><h2>From stated ambition to realised public value</h2><p>For each expected benefit, ask the same sequence of questions rather than waiting for a final outcome measure.</p></div>
+      <div class="flow" aria-label="Expected benefit management framework">
+        <span>Expected benefit</span><i>→</i><span>Mechanism</span><i>→</i><span>Conditions</span><i>→</i><span>Lead indicators</span><i>→</i><span>Outcomes</span><i>→</i><strong>Adapt and learn</strong>
+      </div>
+    </section>
 
-    <section id="landscape" class="section-block" aria-labelledby="landscape-title">
-      <div class="section-heading"><div><span class="eyebrow">Exploratory overview</span><h2 id="landscape-title">Evidence landscape</h2><p>Start with a claim. Filters show cross-government and portfolio overlaps; selecting a claim opens its evidence-weighted pathway.</p></div><span class="assignment">Department assignments as at 31 July 2026</span></div>
-
-      <details class="filters card" open>
-        <summary>Filter the landscape <span id="filterSummary">0 applied</span></summary>
-        <div class="filter-grid">
-          <label>Theme<select id="themeFilter"><option value="all">All themes</option>{[...new Set(claims.map(c => c.theme))].map(theme => <option value={theme}>{theme}</option>)}</select></label>
-          <label>Portfolio<select id="portfolioFilter"><option value="all">All portfolios</option>{Object.entries(portfolios).map(([id,label]) => <option value={id}>{label}</option>)}</select></label>
-          <label>Department<select id="departmentFilter"><option value="all">All departments</option>{Object.entries(departments).map(([id,label]) => <option value={id}>{label}</option>)}</select></label>
-          <label>Evidence balance<select id="balanceFilter"><option value="all">All balances</option><option value="supportive">Supportive</option><option value="conditional">Conditional</option><option value="mixed">Mixed</option><option value="gap">Evidence gap</option></select></label>
-          <label>Confidence<select id="confidenceFilter"><option value="all">All confidence levels</option><option value="High">High</option><option value="Moderate">Moderate</option><option value="Low–Moderate">Low–Moderate</option><option value="Low">Low</option><option value="Very low">Very low</option></select></label>
-          <label>Search<input id="searchFilter" type="search" placeholder="e.g. prevention or culture" /></label>
-        </div>
-        <div class="filter-actions"><label class="check"><input id="overlapFilter" type="checkbox" /> Cross-department claims only</label><button id="clearFilters" type="button">Clear filters</button></div>
-        <div id="filterChips" class="filter-chips" aria-label="Applied filters"></div>
-        <p id="resultCount" class="result-count" role="status" aria-live="polite"></p>
-      </details>
-
-      <div class="explorer-layout">
-        <section class="claim-picker card" aria-labelledby="picker-title">
-          <div class="card-heading"><div><span class="eyebrow">Statement propositions</span><h3 id="picker-title">Choose a claim</h3></div><button id="resetSelection" type="button">Reset view</button></div>
-          <div id="claimList" class="claim-list">
-            {claims.map(claim => <button class={`claim-node balance-${claim.balance}`} type="button" data-id={claim.id} data-theme={claim.theme} data-portfolios={claim.portfolios.join(',')} data-departments={claim.departments.join(',')} data-balance={claim.balance} data-confidence={claim.confidence} data-search={`${claim.proposition} ${claim.conclusion} ${claim.theme} ${claim.portfolios.map(x => portfolios[x]).join(' ')}`.toLowerCase()} aria-pressed="false"><span>{claim.theme}</span><strong>{claim.proposition}</strong><small>{claim.judgement} · {claim.confidence}</small></button>)}
-          </div>
-          <div id="noResults" class="no-results" hidden><strong>No evidence matches these filters.</strong><button type="button">Clear all filters</button></div>
-        </section>
-
-        <section class="selected-card card" id="selectedCard" tabindex="-1" aria-labelledby="selectedTitle">
-          <span id="selectedBalance" class="status-chip">Select a claim</span>
-          <h3 id="selectedTitle">How to use the landscape</h3>
-          <p id="selectedConclusion">Select any claim on the left. Its selected state will be visibly outlined and its conclusion, causal pathway, transferability and key sources will appear here.</p>
-          <dl class="evidence-counts"><div><dt>Direct England</dt><dd id="directCount">—</dd></div><div><dt>Indirect / transferable</dt><dd id="indirectCount">—</dd></div><div><dt>Body confidence</dt><dd id="confidenceValue">—</dd></div></dl>
-          <details id="pathwayDetails" class="pathway-disclosure" open>
-            <summary>View the selected causal pathway</summary>
-            <div class="pathway" aria-label="Causal pathway from claim through mechanism and conditions to outcomes and evidence">
-              <div><small>Claim</small><strong id="pathClaim">Select a claim</strong></div><i aria-hidden="true">→</i>
-              <div><small>Mechanism</small><strong id="pathMechanism">—</strong></div><i aria-hidden="true">→</i>
-              <div><small>Conditions</small><ul id="pathConditions"><li>—</li></ul></div><i aria-hidden="true">→</i>
-              <div><small>Intended outcomes</small><ul id="pathOutcomes"><li>—</li></ul></div>
+    <section class="pathways" aria-labelledby="pathways-title">
+      <div class="section-heading"><span class="eyebrow">Evidence by benefit pathway</span><h2 id="pathways-title">What the evidence can—and cannot—tell us</h2><p>Confidence refers to the body of public evidence for the pathway, not to the desirability of the policy.</p></div>
+      <div class="pathway-grid">
+        {pathways.map((item) => (
+          <details class="card pathway-card">
+            <summary>
+              <span><small>{item.theme}</small><strong>{item.pathway}</strong></span>
+              <b>{item.confidence}</b>
+            </summary>
+            <div class="pathway-body">
+              <h3>What public evidence suggests</h3>
+              <p>{item.evidence}</p>
+              <h3>What implementation should monitor</h3>
+              <ul>{item.monitor.map((x) => <li>{x}</li>)}</ul>
+              <h3>Selected sources</h3>
+              <ul class="sources">{item.sources.map(([name,url]) => <li><a href={url} target="_blank" rel="noreferrer">{name} ↗</a></li>)}</ul>
             </div>
           </details>
-          <div class="selected-detail"><h4>Transferability</h4><p id="transferNote">International evidence is assessed separately from direct England evidence.</p><h4>Key evidence</h4><div id="sourceList"><p>Sources will appear after selection.</p></div></div>
-          <div class="selected-detail"><h4>Department overlap</h4><div id="departmentList" class="filter-chips"><span>Select a claim</span></div><h4>Portfolio overlap</h4><div id="portfolioList" class="filter-chips"><span>Select a claim</span></div></div>
-        </section>
+        ))}
       </div>
     </section>
 
-    <section id="claims" class="section-block" aria-labelledby="claims-title">
-      <div class="section-heading"><div><span class="eyebrow">Accessible source of truth</span><h2 id="claims-title">Claim-by-claim conclusions</h2><p>Every conclusion is available without using the interactive landscape.</p></div></div>
-      <div class="matrix" role="list">
-        {claims.map(claim => <details class="claim-card card" role="listitem"><summary><span><small>{claim.theme}</small><strong>{claim.proposition}</strong></span><span class={`matrix-rating balance-${claim.balance}`}>{claim.judgement}<b>{claim.confidence}</b></span></summary><div class="claim-body"><p class="claim-conclusion"><strong>Conclusion:</strong> {claim.conclusion}</p><div class="claim-grid"><div><h3>Conditions</h3><ul>{claim.conditions.map(x => <li>{x}</li>)}</ul></div><div><h3>Evidence coverage</h3><p>{claim.direct} direct England · {claim.indirect} indirect or transferable sources</p></div></div><h3>Transferability</h3><p>{claim.transfer}</p><h3>Key sources</h3><ul>{claim.sources.map(source => <li><a href={source.url} target="_blank" rel="noreferrer">{source.name}</a> <span>— {source.kind}</span></li>)}</ul></div></details>)}
-      </div>
-    </section>
-
-    <section id="implementation" class="section-block" aria-labelledby="implementation-title">
-      <div class="section-heading"><div><span class="eyebrow">From evidence to delivery</span><h2 id="implementation-title">A transition designed for learning and public value</h2><p>The evidence favours function-by-function staging with common safeguards over a uniform transfer model.</p></div></div>
-      <ol class="dependency-map">
-        <li><span>1</span><div><strong>Define the function and outcome</strong><p>Separate the intended public outcome from the preferred machinery.</p></div></li>
-        <li><span>2</span><div><strong>Choose the effective geography</strong><p>Test local information, scale economies, spillovers and market integrity.</p></div></li>
-        <li><span>3</span><div><strong>Align powers, finance, staff and data</strong><p>Move the components needed for a coherent causal pathway.</p></div></li>
-        <li><span>4</span><div><strong>Build capability and scrutiny</strong><p>Treat local and central capability as investable infrastructure.</p></div></li>
-        <li><span>5</span><div><strong>Stage transition with safeguards</strong><p>Use equalisation, floors, risk-sharing and transparent responsibilities.</p></div></li>
-        <li><span>6</span><div><strong>Evaluate outcomes, distribution and cost</strong><p>Track additionality, transition burden, spillovers and who benefits.</p></div></li>
-        <li><span>7</span><div><strong>Scale, adapt, pause or remediate</strong><p>Use pre-agreed evidence thresholds and support routes.</p></div></li>
+    <section class="monitoring">
+      <div class="section-heading"><span class="eyebrow">A reusable approach</span><h2>Monitor the chain, not just the destination.</h2><p>The same discipline applies beyond devolution: public investment, prevention, AI adoption, service integration and other reforms all involve expected benefits whose causal assumptions can fail during delivery.</p></div>
+      <ol>
+        <li><strong>Specify the expected benefit.</strong><span>State what should improve, for whom and over what period.</span></li>
+        <li><strong>Make the mechanism explicit.</strong><span>Describe how the change is expected to produce that benefit.</span></li>
+        <li><strong>Identify enabling conditions and risks.</strong><span>Capability, incentives, data, coordination, distribution and transition can all matter.</span></li>
+        <li><strong>Track leading indicators.</strong><span>Do not wait for lagging outcomes to discover that the mechanism was not operating.</span></li>
+        <li><strong>Separate confidence from ambition.</strong><span>A desired benefit can remain important even where evidence is uncertain; uncertainty should change monitoring and learning.</span></li>
+        <li><strong>Adapt deliberately.</strong><span>Use evidence to scale, redesign, support, pause or remediate elements as implementation develops.</span></li>
       </ol>
     </section>
 
-    <section id="downloads" class="section-block downloads" aria-labelledby="downloads-title">
-      <div class="section-heading"><div><span class="eyebrow">Open research materials</span><h2 id="downloads-title">Download the full assessment</h2><p>The evidence table separates quality from directness and records transferability and caveats.</p></div></div>
-      <div class="download-grid">
-        <a href={`${base}downloads/rewiring-the-state-full-rea-bundle.zip`} download><strong>Complete research bundle</strong><span>REA, evidence table, screening log and visual specification · ZIP</span></a>
-        <a href={`${base}downloads/rewiring-the-state-full-rea.md`} download><strong>Full rapid evidence assessment</strong><span>Protocol, findings, options, gaps and verified bibliography · Markdown</span></a>
-        <a href={`${base}downloads/rewiring-the-state-evidence-table.csv`} download><strong>Evidence table</strong><span>39 included sources with appraisal and transferability · CSV</span></a>
-        <a href={`${base}downloads/rewiring-the-state-search-screening-log.csv`} download><strong>Search and screening log</strong><span>58 logged records and decisions · CSV</span></a>
-        <a href={`${base}downloads/rewiring-the-state-visualisation-spec.md`} download><strong>Visualisation specification</strong><span>Three-layer evidence architecture and acceptance tests · Markdown</span></a>
-        <a href={`${base}downloads/rewiring-the-state-cabinet-statement.pdf`} download><strong>Primary document assessed</strong><span>Rewiring the State: Cabinet Statement · PDF</span></a>
-      </div>
+    <section class="method card">
+      <span class="eyebrow">Method and limits</span>
+      <h2>Rapid evidence assessment</h2>
+      <p>The underlying assessment searched academic and official sources on 9 August 2026 and logged 58 records, of which 39 were included after screening. Sources were appraised separately for quality, directness and transferability. This is a rapid assessment rather than an exhaustive systematic review; bundled reforms, short follow-up periods and differences between international systems limit attribution and transferability.</p>
+      <p>The evidence table and screening log are published to make those judgements inspectable. The Cabinet Statement is linked to its canonical GOV.UK source rather than redistributed here.</p>
     </section>
-
-    <section id="method" class="section-block method" aria-labelledby="method-title">
-      <div class="section-heading"><div><span class="eyebrow">Method and limits</span><h2 id="method-title">How the assessment was produced</h2></div></div>
-      <details class="card"><summary>Question, scope and evidence tiers</summary><div><p><strong>Question:</strong> To what extent, and under what conditions, does existing evidence support or challenge the principal causal claims in the Cabinet statement—particularly that transferring powers, resources and fiscal responsibility closer to place will improve growth, service integration, prevention, accountability and public value?</p><p>The assessment is independent and cross-government. Evidence is separated into direct England, wider UK, comparable international and broader global mechanism tiers.</p></div></details>
-      <details class="card"><summary>Search, screening and appraisal</summary><div><p>Searches on 9 August 2026 covered academic indexes and primary repositories, PubMed/PMC, OECD, World Bank, UK government, the National Audit Office, Institute for Fiscal Studies and What Works sources. Of 58 logged records, 39 were included.</p><p>Each source was appraised for design, comparator, identification, outcome validity, reporting, relevance and transferability. Quality and directness were rated separately.</p></div></details>
-      <details class="card"><summary>Rapid-review limitations</summary><div><p>This was a rapid assessment rather than an exhaustive systematic review. Citation chasing was selective, no unpublished evidence call was conducted, and bundled non-random reforms remain difficult to attribute. Confidence was reduced for indirectness, inconsistency, short follow-up and weak measures.</p></div></details>
-    </section>
-
-    <script id="reaData" type="application/json" set:html={JSON.stringify(payload)}></script>
   </div>
 
-  <script>
-    const raw = document.querySelector('#reaData');
-    const data = JSON.parse(raw?.textContent || '{"claims":[],"departments":{},"portfolios":{}}');
-    const byId = new Map(data.claims.map((claim) => [claim.id, claim]));
-    const buttons = [...document.querySelectorAll('.claim-node')];
-    const fields = {
-      theme: document.querySelector('#themeFilter'), portfolio: document.querySelector('#portfolioFilter'),
-      department: document.querySelector('#departmentFilter'), balance: document.querySelector('#balanceFilter'),
-      confidence: document.querySelector('#confidenceFilter'), search: document.querySelector('#searchFilter'),
-      overlap: document.querySelector('#overlapFilter')
-    };
-
-    const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[character]));
-    const listHtml = (items) => items.map(item => `<li>${escapeHtml(item)}</li>`).join('');
-
-    function selectClaim(id, moveFocus = false) {
-      const claim = byId.get(id); if (!claim) return;
-      buttons.forEach(button => { const selected = button.dataset.id === id; button.classList.toggle('selected', selected); button.setAttribute('aria-pressed', String(selected)); });
-      const balance = document.querySelector('#selectedBalance'); balance.textContent = `${claim.judgement} · ${claim.confidence} confidence`; balance.className = `status-chip balance-${claim.balance}`;
-      document.querySelector('#selectedTitle').textContent = claim.proposition;
-      document.querySelector('#selectedConclusion').textContent = claim.conclusion;
-      document.querySelector('#directCount').textContent = claim.direct;
-      document.querySelector('#indirectCount').textContent = claim.indirect;
-      document.querySelector('#confidenceValue').textContent = claim.confidence;
-      document.querySelector('#pathClaim').textContent = claim.proposition;
-      document.querySelector('#pathMechanism').textContent = claim.mechanism;
-      document.querySelector('#pathConditions').innerHTML = listHtml(claim.conditions);
-      document.querySelector('#pathOutcomes').innerHTML = listHtml(claim.outcomes);
-      document.querySelector('#transferNote').textContent = claim.transfer;
-      document.querySelector('#sourceList').innerHTML = claim.sources.map(source => `<article><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer"><strong>${escapeHtml(source.name)} ↗</strong></a><span>${escapeHtml(source.kind)}</span></article>`).join('');
-      document.querySelector('#departmentList').innerHTML = claim.departments.map(id => `<span>${escapeHtml(data.departments[id])}</span>`).join('');
-      document.querySelector('#portfolioList').innerHTML = claim.portfolios.map(id => `<span>${escapeHtml(data.portfolios[id])}</span>`).join('');
-      if (moveFocus && window.matchMedia('(max-width: 900px)').matches) { const card = document.querySelector('#selectedCard'); card.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'}); card.focus({preventScroll:true}); }
-    }
-
-    function readState() {
-      return { theme: fields.theme.value, portfolio: fields.portfolio.value, department: fields.department.value, balance: fields.balance.value, confidence: fields.confidence.value, search: fields.search.value.trim().toLowerCase(), overlap: fields.overlap.checked };
-    }
-
-    function syncUrl(state) {
-      const params = new URLSearchParams();
-      Object.entries(state).forEach(([key,value]) => { if (value && value !== 'all' && value !== false) params.set(key, String(value)); });
-      history.replaceState({}, '', `${location.pathname}${params.size ? `?${params}` : ''}${location.hash}`);
-    }
-
-    function applyFilters(updateUrl = true) {
-      const state = readState(); let visible = 0;
-      buttons.forEach(button => {
-        const portfolios = button.dataset.portfolios.split(','); const departments = button.dataset.departments.split(',');
-        const show = (state.theme === 'all' || button.dataset.theme === state.theme) &&
-          (state.portfolio === 'all' || portfolios.includes(state.portfolio)) &&
-          (state.department === 'all' || departments.includes(state.department)) &&
-          (state.balance === 'all' || button.dataset.balance === state.balance) &&
-          (state.confidence === 'all' || button.dataset.confidence === state.confidence) &&
-          (!state.search || button.dataset.search.includes(state.search)) && (!state.overlap || departments.length > 1);
-        button.hidden = !show; if (show) visible += 1;
-      });
-      document.querySelector('#resultCount').textContent = `${visible} of ${buttons.length} assessed claims shown.`;
-      document.querySelector('#noResults').hidden = visible !== 0;
-      const chips = [];
-      if (state.theme !== 'all') chips.push(state.theme);
-      if (state.portfolio !== 'all') chips.push(data.portfolios[state.portfolio]);
-      if (state.department !== 'all') chips.push(data.departments[state.department]);
-      if (state.balance !== 'all') chips.push(`Balance: ${state.balance}`);
-      if (state.confidence !== 'all') chips.push(`Confidence: ${state.confidence}`);
-      if (state.search) chips.push(`Search: ${state.search}`);
-      if (state.overlap) chips.push('Cross-department only');
-      document.querySelector('#filterChips').innerHTML = chips.map(chip => `<span>${escapeHtml(chip)}</span>`).join('');
-      document.querySelector('#filterSummary').textContent = `${chips.length} applied`;
-      const selected = buttons.find(button => button.getAttribute('aria-pressed') === 'true');
-      if (selected?.hidden) { const firstVisible = buttons.find(button => !button.hidden); if (firstVisible) selectClaim(firstVisible.dataset.id); }
-      if (updateUrl) syncUrl(state);
-    }
-
-    function clearFilters() {
-      fields.theme.value = fields.portfolio.value = fields.department.value = fields.balance.value = fields.confidence.value = 'all';
-      fields.search.value = ''; fields.overlap.checked = false; applyFilters();
-    }
-
-    function loadUrl() {
-      const params = new URLSearchParams(location.search);
-      ['theme','portfolio','department','balance','confidence'].forEach(key => { const value = params.get(key); if (value && [...fields[key].options].some(option => option.value === value)) fields[key].value = value; });
-      fields.search.value = params.get('search') || ''; fields.overlap.checked = params.get('overlap') === 'true'; applyFilters(false);
-    }
-
-    buttons.forEach(button => button.addEventListener('click', () => selectClaim(button.dataset.id, true)));
-    Object.values(fields).forEach(field => field.addEventListener(field.type === 'search' ? 'input' : 'change', () => applyFilters()));
-    document.querySelector('#clearFilters').addEventListener('click', clearFilters);
-    document.querySelector('#noResults button').addEventListener('click', clearFilters);
-    document.querySelector('#resetSelection').addEventListener('click', () => { const preferred = buttons.find(button => button.dataset.id === 'capability' && !button.hidden) || buttons.find(button => !button.hidden); if (preferred) selectClaim(preferred.dataset.id); });
-    loadUrl(); const initial = buttons.find(button => button.dataset.id === 'capability' && !button.hidden) || buttons.find(button => !button.hidden); if (initial) selectClaim(initial.dataset.id);
-  </script>
-
   <style>
-    .rea-shell{max-width:1380px;margin:0 auto;padding:0 clamp(1rem,3vw,2.5rem) 5rem}.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.5fr);gap:2rem;align-items:end;padding:clamp(3rem,7vw,6rem) 0 2rem}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--accent)}.hero h1{font-size:clamp(2.7rem,7vw,6.4rem);line-height:.93;letter-spacing:-.055em;margin:.65rem 0 1.2rem;max-width:1050px}.lede{font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.65;color:var(--text-secondary);max-width:850px}.scope-note{display:grid;gap:.5rem;padding:1.2rem;border:1px solid var(--border);border-radius:18px;background:var(--bg-secondary);color:var(--text-secondary);line-height:1.55}.scope-note strong{color:var(--text-primary)}.card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;box-shadow:0 12px 36px rgba(20,32,51,.06)}.bottom-line{padding:clamp(1.25rem,3vw,2rem);border-top:5px solid var(--accent)}.bottom-line h2{font-size:clamp(1.8rem,4vw,3.4rem);letter-spacing:-.04em;margin:.4rem 0 1rem;max-width:1050px}.bottom-line>p{font-size:1.07rem;line-height:1.7;color:var(--text-secondary);max-width:1000px}.headline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:1.5rem;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}.headline-grid article{display:grid;gap:.5rem;padding:1rem;background:var(--bg-primary)}.headline-grid small{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.06em}.jump-nav{position:sticky;top:64px;z-index:8;display:flex;gap:.55rem;flex-wrap:wrap;padding:.75rem 0;margin:1rem 0;background:color-mix(in srgb,var(--bg-primary) 92%,transparent);backdrop-filter:blur(14px)}.jump-nav a{padding:.55rem .75rem;border:1px solid var(--border);border-radius:999px;background:var(--bg-secondary);color:var(--text-primary);text-decoration:none;font-size:.84rem;font-weight:750}.section-block{padding:clamp(3rem,7vw,6rem) 0;border-bottom:1px solid var(--border);scroll-margin-top:130px}.section-heading{display:flex;justify-content:space-between;gap:2rem;align-items:end;margin-bottom:1.5rem}.section-heading h2{font-size:clamp(2rem,5vw,4.4rem);letter-spacing:-.045em;margin:.35rem 0}.section-heading p{max-width:760px;color:var(--text-secondary);line-height:1.65}.assignment{max-width:220px;color:var(--text-secondary);font-size:.82rem}.filters{margin-bottom:1rem}.filters>summary,.method summary{display:flex;justify-content:space-between;align-items:center;min-height:58px;padding:.8rem 1.1rem;cursor:pointer;list-style:none;font-weight:800}.filters>summary::-webkit-details-marker,.method summary::-webkit-details-marker{display:none}.filters>summary::after,.method summary::after{content:'+';font-size:1.4rem;color:var(--accent);margin-left:.7rem}.filters[open]>summary::after,.method details[open]>summary::after{content:'−'}.filters>summary span{margin-left:auto;color:var(--text-secondary);font-size:.78rem}.filter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 1.1rem 1rem}.filter-grid label{font-size:.82rem;font-weight:750}.filter-grid select,.filter-grid input,.filter-actions button{display:block;width:100%;margin-top:.4rem;min-height:44px;padding:.65rem .7rem;border:1px solid var(--border);border-radius:10px;background:var(--bg-primary);color:var(--text-primary);font:inherit}.filter-actions{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0 1.1rem}.filter-actions .check{display:flex;align-items:center;gap:.55rem}.check input{width:20px;height:20px}.filter-actions button{width:auto;margin:0}.filter-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:.8rem 1.1rem 0}.filter-chips:empty{padding:0}.filter-chips span{padding:.3rem .55rem;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.76rem;font-weight:750}.result-count{padding:0 1.1rem 1rem;margin:.75rem 0 0;color:var(--text-secondary);font-size:.84rem}.explorer-layout{display:grid;grid-template-columns:minmax(320px,.75fr) minmax(0,1.25fr);gap:1rem;align-items:start}.claim-picker{padding:1rem}.card-heading{display:flex;align-items:start;justify-content:space-between;gap:1rem;margin-bottom:1rem}.card-heading h3{font-size:1.5rem;margin:.25rem 0}.card-heading button{padding:.55rem .7rem;border:1px solid var(--border);border-radius:10px;background:var(--bg-primary);color:var(--text-primary)}.claim-list{display:grid;gap:.65rem;max-height:790px;overflow:auto;padding:3px}.claim-node{min-height:92px;text-align:left;display:grid;gap:.35rem;padding:.85rem 1rem;border:2px solid var(--border);border-left:7px solid var(--balance);border-radius:13px;background:var(--bg-primary);color:var(--text-primary)}.claim-node span,.claim-node small{color:var(--text-secondary);font-size:.74rem}.claim-node span{text-transform:uppercase;letter-spacing:.06em;font-weight:750}.balance-supportive{--balance:#16845b}.balance-conditional{--balance:#856404}.balance-mixed{--balance:#b2551c}.balance-gap{--balance:#a62f2f}.claim-node:hover,.claim-node:focus-visible{border-color:var(--balance);outline:3px solid color-mix(in srgb,var(--balance) 24%,transparent)}.claim-node.selected{border-color:var(--balance);box-shadow:0 0 0 4px color-mix(in srgb,var(--balance) 32%,transparent)}.claim-node[hidden]{display:none}.no-results{padding:1.5rem;text-align:center}.no-results button{display:block;margin:.8rem auto 0;min-height:44px}.selected-card{position:sticky;top:130px;padding:clamp(1.1rem,2vw,1.6rem)}.status-chip,.matrix-rating{display:inline-flex;padding:.35rem .55rem;border-radius:999px;border:2px solid var(--balance,var(--border));font-size:.76rem;font-weight:800}.selected-card>h3{font-size:clamp(1.7rem,4vw,2.7rem);letter-spacing:-.035em;margin:.65rem 0}.selected-card>p{color:var(--text-secondary);font-size:1.03rem;line-height:1.65}.evidence-counts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:1.2rem 0}.evidence-counts div{padding:.8rem;background:var(--bg-primary)}.evidence-counts dt{font-size:.7rem;text-transform:uppercase;color:var(--text-secondary);font-weight:750}.evidence-counts dd{font-size:1.2rem;font-weight:800;margin:.25rem 0 0}.pathway-disclosure{border:1px solid var(--border);border-radius:14px;overflow:hidden}.pathway-disclosure>summary{cursor:pointer;padding:.8rem 1rem;font-weight:800}.pathway{display:grid;grid-template-columns:repeat(4,minmax(0,1fr) auto);align-items:center;gap:.55rem;padding:0 1rem 1rem}.pathway>div{align-self:stretch;display:grid;gap:.35rem;align-content:start;padding:.75rem;border:1px solid var(--border);border-radius:10px;background:var(--bg-primary)}.pathway small{color:var(--accent);text-transform:uppercase;font-weight:800}.pathway strong{font-size:.88rem}.pathway ul{padding-left:1.1rem;margin:.2rem 0;font-size:.82rem}.pathway i{color:var(--accent);font-style:normal;font-size:1.2rem}.selected-detail h4{margin:1.2rem 0 .4rem}.selected-detail>p{color:var(--text-secondary);line-height:1.6}.selected-detail article{display:grid;gap:.25rem;padding:.75rem 0;border-top:1px solid var(--border)}.selected-detail a{color:var(--text-primary);text-decoration:none}.selected-detail a:hover{color:var(--accent)}.selected-detail article span{color:var(--text-secondary);font-size:.78rem}.matrix{display:grid;gap:.75rem}.claim-card{box-shadow:none}.claim-card>summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:80px;padding:1rem 1.2rem;cursor:pointer;list-style:none}.claim-card>summary::-webkit-details-marker{display:none}.claim-card>summary>span:first-child{display:grid;gap:.3rem}.claim-card>summary small{color:var(--accent);text-transform:uppercase;font-weight:800}.matrix-rating{flex-direction:column;align-items:flex-end;border-color:var(--balance);border-radius:12px}.matrix-rating b{font-size:.72rem;color:var(--text-secondary)}.claim-body{padding:0 1.2rem 1.2rem;border-top:1px solid var(--border)}.claim-conclusion{font-size:1.05rem;line-height:1.65}.claim-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.claim-body h3{font-size:1rem;margin:1.2rem 0 .5rem}.claim-body p,.claim-body li{color:var(--text-secondary);line-height:1.6}.claim-body a{color:var(--accent)}.dependency-map{display:grid;grid-template-columns:repeat(7,1fr);gap:.65rem;list-style:none;padding:0;counter-reset:none}.dependency-map li{position:relative;display:grid;grid-template-rows:auto 1fr;gap:.7rem}.dependency-map li:not(:last-child)::after{content:'→';position:absolute;right:-.6rem;top:.45rem;color:var(--accent);font-weight:900}.dependency-map li>span{display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:white;font-weight:850}.dependency-map li>div{padding:1rem;border:1px solid var(--border);border-radius:14px;background:var(--bg-secondary)}.dependency-map p{color:var(--text-secondary);font-size:.85rem;line-height:1.55}.download-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.download-grid a{display:grid;gap:.45rem;padding:1.2rem;border:1px solid var(--border);border-radius:16px;background:var(--bg-secondary);color:var(--text-primary);text-decoration:none}.download-grid a:hover{border-color:var(--accent);transform:translateY(-2px)}.download-grid span{color:var(--text-secondary);font-size:.86rem}.method{max-width:920px}.method details{margin:.75rem 0;box-shadow:none}.method details>div{padding:0 1.1rem 1rem;color:var(--text-secondary);line-height:1.65}
-    @media(max-width:1050px){.headline-grid{grid-template-columns:repeat(2,1fr)}.explorer-layout{grid-template-columns:1fr}.claim-list{grid-template-columns:repeat(2,1fr);max-height:none}.selected-card{position:static}.dependency-map{grid-template-columns:repeat(2,1fr)}.dependency-map li::after{display:none}.pathway{grid-template-columns:1fr}.pathway i{transform:rotate(90deg);justify-self:center}}
-    @media(max-width:700px){.rea-shell{padding:0 1rem 3rem}.hero{grid-template-columns:1fr}.hero h1{font-size:clamp(2.5rem,13vw,4rem)}.scope-note{font-size:.88rem}.headline-grid,.filter-grid,.claim-list,.claim-grid,.download-grid,.dependency-map{grid-template-columns:1fr}.jump-nav{top:58px;overflow-x:auto;flex-wrap:nowrap;margin-left:-1rem;margin-right:-1rem;padding:.65rem 1rem}.jump-nav a{white-space:nowrap}.section-heading{align-items:start;flex-direction:column;gap:.5rem}.assignment{max-width:none}.filters:not([open]) .filter-grid{display:none}.filter-actions{align-items:flex-start;flex-direction:column}.filter-actions button{width:100%}.claim-card>summary{align-items:flex-start;flex-direction:column}.matrix-rating{align-items:flex-start}.evidence-counts{grid-template-columns:1fr}.pathway-disclosure:not([open]) .pathway{display:none}.headline-grid article{min-height:110px}.selected-card{scroll-margin-top:125px}}
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.download-grid a{transform:none!important}}
+    .page-shell{max-width:1180px;margin:0 auto;padding:0 clamp(1rem,3vw,2.5rem) 5rem}.hero{padding:clamp(3rem,7vw,6rem) 0 2rem}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--accent)}.hero h1{font-size:clamp(2.7rem,7vw,6rem);line-height:.94;letter-spacing:-.055em;margin:.6rem 0 1.2rem;max-width:1050px}.lede{font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.7;color:var(--text-secondary);max-width:900px}.scope-note{margin-top:1.5rem;padding:1.1rem 1.2rem;border-left:4px solid var(--accent);background:var(--bg-secondary);border-radius:10px}.scope-note p{margin:.35rem 0;color:var(--text-secondary);line-height:1.6}.hero-links{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.25rem}.hero-links a{padding:.65rem .8rem;border:1px solid var(--border);border-radius:10px;color:var(--text-primary);text-decoration:none;font-weight:700}.hero-links a:hover{border-color:var(--accent);color:var(--accent)}.card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:18px}.message{padding:clamp(1.2rem,3vw,2rem);border-top:5px solid var(--accent)}.message h2,.section-heading h2,.method h2{font-size:clamp(1.8rem,4vw,3.3rem);letter-spacing:-.04em;margin:.4rem 0 1rem}.message>p,.section-heading p,.method p{color:var(--text-secondary);line-height:1.7}.message-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:13px;overflow:hidden;margin-top:1.5rem}.message-grid article{padding:1rem;background:var(--bg-primary);display:grid;gap:.4rem}.message-grid small{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.06em}.framework,.pathways,.monitoring,.method{margin-top:clamp(3rem,7vw,5.5rem)}.section-heading{max-width:900px;margin-bottom:1.5rem}.flow{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;padding:1.1rem;border:1px solid var(--border);border-radius:16px;background:var(--bg-secondary)}.flow span,.flow strong{padding:.65rem .75rem;background:var(--bg-primary);border:1px solid var(--border);border-radius:9px}.flow i{font-style:normal;color:var(--accent);font-weight:900}.pathway-grid{display:grid;gap:.75rem}.pathway-card{overflow:hidden}.pathway-card summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.15rem;cursor:pointer;list-style:none}.pathway-card summary::-webkit-details-marker{display:none}.pathway-card summary>span{display:grid;gap:.3rem}.pathway-card summary small{color:var(--accent);text-transform:uppercase;font-weight:800}.pathway-card summary b{font-size:.78rem;padding:.4rem .55rem;border:1px solid var(--border);border-radius:999px;white-space:nowrap}.pathway-body{padding:0 1.15rem 1.2rem;border-top:1px solid var(--border)}.pathway-body h3{font-size:1rem;margin:1.1rem 0 .45rem}.pathway-body p,.pathway-body li{color:var(--text-secondary);line-height:1.6}.pathway-body a{color:var(--accent)}.sources{padding-left:1.2rem}.monitoring ol{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;padding:0;list-style:none}.monitoring li{padding:1rem;border:1px solid var(--border);border-radius:13px;background:var(--bg-secondary);display:grid;gap:.35rem}.monitoring li span{color:var(--text-secondary);line-height:1.55}.method{padding:1.4rem}.method h2{font-size:2rem}.method p:last-child{margin-bottom:0}@media(max-width:700px){.message-grid,.monitoring ol{grid-template-columns:1fr}.pathway-card summary{align-items:flex-start;flex-direction:column}.flow{align-items:stretch;flex-direction:column}.flow i{transform:rotate(90deg);align-self:center}.hero-links{flex-direction:column}.hero-links a{text-align:center}}
   </style>
 </BaseLayout>
