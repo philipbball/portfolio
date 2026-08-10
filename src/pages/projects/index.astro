@@ -6,22 +6,22 @@ const base = import.meta.env.BASE_URL;
 <BaseLayout title="Projects" description="Applied research, analytical tools and experiments in public value">
   <div class="section-page">
     <h1>Projects</h1>
-    <p class="intro">Applied research, analytical tools and experiments focused on place, public value and better decision-making.</p>
+    <p class="intro">Applied research, analytical tools and experiments focused on evidence, implementation and the active management of public value.</p>
 
     <div class="project-grid">
       <article class="project-card featured">
         <div class="card-topline">
-          <span class="project-type">Full rapid evidence assessment</span>
+          <span class="project-type">Public-source evidence project</span>
           <span class="project-date">August 2026</span>
         </div>
-        <h2><a href={`${base}projects/rewiring-the-state-evidence/`}>Rewiring the State: what does the evidence support?</a></h2>
-        <p><strong>Conclusion:</strong> devolution is best understood as a conditional institution-building strategy—not an automatic route to growth or savings. Explore ten claims, cross-government overlaps and 39 appraised sources.</p>
+        <h2><a href={`${base}projects/rewiring-the-state-evidence/`}>Rewiring the State: what should implementation watch?</a></h2>
+        <p>Given the stated direction of travel, this project maps the expected-benefit pathways behind devolution and institutional reform, where public evidence is stronger or weaker, and what implementation should monitor as benefits develop.</p>
         <div class="tags" aria-label="Topics">
+          <span>Active benefits management</span>
           <span>Devolution</span>
           <span>Public value</span>
-          <span>Institutional reform</span>
         </div>
-        <a class="read-link" href={`${base}projects/rewiring-the-state-evidence/`}>Explore the assessment <span aria-hidden="true">→</span></a>
+        <a class="read-link" href={`${base}projects/rewiring-the-state-evidence/`}>Explore the evidence <span aria-hidden="true">→</span></a>
       </article>
 
       <article class="project-card featured">
@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL;
           <span class="project-date">August 2026</span>
         </div>
         <h2><a href={`${base}projects/when-targeting-need-is-not-enough/`}>When targeting need is not enough</a></h2>
-        <p><strong>Conclusion:</strong> need is an essential equity criterion, but not a complete allocation rule. Better targeting also tests the mechanism, readiness, additionality and expected value of the next pound.</p>
+        <p>Need is an essential equity criterion, but not a complete allocation rule. This project examines how mechanism, readiness, additionality and expected marginal value can complement need when managing public investment.</p>
         <div class="tags" aria-label="Topics">
           <span>Place-based policy</span>
           <span>Public value</span>
@@ -43,107 +43,5 @@ const base = import.meta.env.BASE_URL;
 </BaseLayout>
 
 <style>
-  .section-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-  }
-
-  .section-page h1 {
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-  }
-
-  .intro {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    line-height: 1.65;
-    margin-bottom: 2.5rem;
-  }
-
-  .project-grid {
-    display: grid;
-    gap: 1.25rem;
-  }
-
-  .project-card {
-    padding: 1.6rem;
-    background: var(--bg-secondary);
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    box-shadow: 0 12px 36px rgba(20, 32, 51, 0.07);
-  }
-
-  .project-card.featured {
-    border-top: 4px solid var(--accent);
-  }
-
-  .card-topline {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-    font-size: 0.82rem;
-  }
-
-  .project-type {
-    color: var(--accent);
-    font-weight: 750;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .project-card h2 {
-    font-size: 1.65rem;
-    letter-spacing: -0.025em;
-    margin: 0 0 0.75rem;
-  }
-
-  .project-card h2 a,
-  .read-link {
-    color: var(--text-primary);
-    text-decoration: none;
-  }
-
-  .project-card h2 a:hover,
-  .read-link:hover {
-    color: var(--accent);
-  }
-
-  .project-card p {
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1.25rem 0;
-  }
-
-  .tags span {
-    padding: 0.35rem 0.65rem;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 650;
-  }
-
-  .read-link {
-    display: inline-block;
-    font-weight: 750;
-  }
-
-  @media (max-width: 768px) {
-    .section-page {
-      padding: 2rem 1rem;
-    }
-
-    .section-page h1 {
-      font-size: 1.75rem;
-    }
-  }
+  .section-page{max-width:800px;margin:0 auto;padding:3rem 2rem}.section-page h1{margin-bottom:1rem;font-size:2.5rem}.intro{color:var(--text-secondary);font-size:1.1rem;line-height:1.65;margin-bottom:2.5rem}.project-grid{display:grid;gap:1.25rem}.project-card{padding:1.6rem;background:var(--bg-secondary);border-radius:18px;border:1px solid var(--border);box-shadow:0 12px 36px rgba(20,32,51,.07)}.project-card.featured{border-top:4px solid var(--accent)}.card-topline{display:flex;justify-content:space-between;gap:1rem;margin-bottom:1rem;color:var(--text-secondary);font-size:.82rem}.project-type{color:var(--accent);font-weight:750;text-transform:uppercase;letter-spacing:.08em}.project-card h2{font-size:1.65rem;letter-spacing:-.025em;margin:0 0 .75rem}.project-card h2 a,.read-link{color:var(--text-primary);text-decoration:none}.project-card h2 a:hover,.read-link:hover{color:var(--accent)}.project-card p{color:var(--text-secondary);line-height:1.65}.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0}.tags span{padding:.35rem .65rem;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.78rem;font-weight:650}.read-link{display:inline-block;font-weight:750}@media(max-width:768px){.section-page{padding:2rem 1rem}.section-page h1{font-size:1.75rem}.card-topline{flex-direction:column;gap:.35rem}}
 </style>
